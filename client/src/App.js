@@ -1,11 +1,18 @@
+import React from 'react';
 import './App.css';
-import MenuBar from './components/MenuBar/MenuBar';
+import Home from './Views/Home';
+import { Routes, Route } from "react-router-dom"
+import Landing from './Views/Landing';
 function App() {
   return (
+
     <div className="App">
-      <MenuBar/>
-      <h1>Henry Videogames</h1>
+      <Routes>
+        <Route estrict path='/' element={<Landing />} />
+        <Route estrict path='/home' element={<Home />} />
+      </Routes>
     </div>
+
   );
 }
 

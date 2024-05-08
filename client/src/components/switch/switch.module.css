@@ -1,0 +1,109 @@
+@font-face {
+    font-family: 'Get Schwifty';
+    src: url(..//..//assets/font/get_schwifty.ttf);
+}
+
+.contSwitch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 10px;
+    animation: toggle__animation 3s infinite;
+}
+
+.switch {
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 3.5em;
+    height: 2em;
+    transform-style: preserve-3d;
+    perspective: 300px;
+
+}
+
+.switch::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    filter: blur(20px);
+    z-index: -1;
+    border-radius: 50px;
+    background-color: #8ad413;
+    background-image: radial-gradient(at 21% 46%, rgb(22, 153, 52) 0px, transparent 50%),
+        radial-gradient(at 23% 25%, rgb(17, 128, 36) 0px, transparent 50%),
+        radial-gradient(at 20% 1%, rgb(59, 155, 86) 0px, transparent 50%),
+        radial-gradient(at 86% 87%, rgb(8, 224, 12) 0px, transparent 50%),
+        radial-gradient(at 99% 41%, rgb(1, 167, 76) 0px, transparent 50%),
+        radial-gradient(at 55% 24%, hsla(138, 60%, 62%, 1) 0px, transparent 50%);
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #04ed14dc;
+    transition: .4s;
+    border-radius: 30px;
+    text-align: end;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 1.4em;
+    width: 1.4em;
+    left: 0.3em;
+    bottom: 0.35em;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -10px 10px 0px inset,
+        rgba(0, 0, 0, 0.09) 0px -1px 15px -8px;
+    background-color: #eae129;
+    background-image: radial-gradient(at 81% 39%, rgb(241, 130, 191) 0px, transparent 50%),
+        radial-gradient(at 11% 72%, rgb(176, 131, 245) 0px, transparent 50%),
+        radial-gradient(at 23% 20%, rgb(100, 226, 100) 0px, transparent 50%);
+}
+
+.input__check:checked+.slider {
+    background-color: #17202A;
+}
+
+.input__check:checked+.slider:before {
+    transform: translateX(1.5em);
+}
+
+@keyframes toggle__animation {
+
+    0%,
+    100% {
+        transform: translateY(-10px) rotateY(-20deg);
+    }
+
+    50% {
+        transform: translateY(0px) rotateY(-20deg);
+    }
+}
+
+.switchText {
+    margin-right: 10px;
+    font-size: 20px;
+    font-family: 'Get Schwifty';
+    color: #8ad413;
+    text-shadow: #eae129;
+    animation: toggle__animation 3s infinite;
+}

@@ -6,10 +6,10 @@ export default function MenuBar({onSearch}) {
 
     return (
         <div className={style.container}>
-            <button className={style.button}>Home</button>
-            <button className={style.button}>Games</button>
-            <button className={style.button}>Genres</button>
-            <button className={style.button}>Platforms</button>
+            <button className={style.btn}>Home</button>
+            <button className={style.btn}>Games</button>
+            <button className={style.btn}>Genres</button>
+            <button className={style.btn}>Platforms</button>
             <SearchBar onSearch={onSearch}/>
         </div>
     )

@@ -1,0 +1,21 @@
+
+.container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+    position: left;
+}
+
+.input {
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    color: rgb(55, 29, 157);
+    background-color: rgba(16, 246, 35, 0.5);
+    position: relative;
+    font-family: "Bubble";
+    background-color: none;
+    text-shadow: #2ff21d 1px 0 10px;
+}
