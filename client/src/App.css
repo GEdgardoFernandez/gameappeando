@@ -17,6 +17,7 @@
   font-size: 50px;
   color: rgba(236, 79, 44, 0.8);
   text-shadow: #000000 2px 0 20px;
+  margin: 40px;
 }
 .h1landing {
   font-family: "Blox";
@@ -78,5 +79,6 @@
   background-image: url("..//src/assets/Img/fondoInicio.jpg");
   background-size: 100% 100%;
   min-height: 100vh;
+  gap: 1rem;
 }
 

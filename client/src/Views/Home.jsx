@@ -1,5 +1,6 @@
 import MenuBar from "../components/MenuBar/MenuBar";
 import GamesCards from "../components/GamesCards/GamesCards";
+
 const Home = () => {
 
     return (
