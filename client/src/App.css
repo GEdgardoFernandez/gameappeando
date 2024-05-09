@@ -10,16 +10,19 @@
 
 .App {
   text-align: center;
-  background-image: url("..//src/assets/Img/Fondo02.jpg");
-  background-size: 100% 100%;
-  min-height: 100vh;
 }
 
-h1 {
+.h1home {
   font-family: "Blox";
   font-size: 50px;
-  color: rgba(236, 44, 60, 0.8);
-  text-shadow: #67ea09 1px 0 10px;
+  color: rgba(236, 79, 44, 0.8);
+  text-shadow: #000000 2px 0 20px;
+}
+.h1landing {
+  font-family: "Blox";
+  font-size: 50px;
+  color: rgba(236, 79, 44, 0.8);
+  text-shadow: #49ea09 1px 0 10px;
 }
 
 .App-logo {
@@ -58,8 +61,22 @@ h1 {
   }
 }
 
-.container {
+.containerLanding {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  position: initial;
   align-items: center;
+  background-image: url("..//src/assets/Img/fondoInicio2.jpg");
+  background-size: 100% 100%;
+  min-height: 100vh;
 }
+.containerHome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("..//src/assets/Img/fondoInicio.jpg");
+  background-size: 100% 100%;
+  min-height: 100vh;
+}
+

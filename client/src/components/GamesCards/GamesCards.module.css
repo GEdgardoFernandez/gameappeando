@@ -1,8 +1,7 @@
-.container {
+.containerCards {
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
-    flex-direction: row;
+    flex-wrap: wrap;
     gap: 1rem;
-    position: left;
 }

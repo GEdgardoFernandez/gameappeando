@@ -1,14 +1,12 @@
 import style from './LoginForm.module.css';
-
+import { useNavigate } from 'react-router-dom';
 const LoginForm = () => {
-
+    const navigate = useNavigate();
     return (
         <div className={style.container}>
-        <div className={style.backgroundButton}>
-            <button className={style.button}>
-                ENTER NOW!!
+            <button className={style.but} onClick={() => navigate('/home')}>
+                Start
             </button>
-        </div>
         </div>
     )
 }

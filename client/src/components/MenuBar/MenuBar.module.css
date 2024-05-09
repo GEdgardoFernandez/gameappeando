@@ -14,12 +14,12 @@
   font-size: 20px;
   border: none;
   border-radius: 5px;
-  color: rgb(55, 29, 157);
+  color: rgb(157, 29, 144);
   background-color: transparent;
   position: relative;
   font-family: "Bubble";
 background-color: none;
-text-shadow: #2ff21d 1px 0 10px;
+text-shadow: #f21dd2 1px 0 10px;
 }
 
 .btn::after {
@@ -30,7 +30,7 @@ text-shadow: #2ff21d 1px 0 10px;
   --move5: inset(45% 0 6% 0);
   --move6: inset(14% 0 61% 0);
   clip-path: var(--move1);
-  content: 'PLAY NOW';
+  content: 'PLAY';
   position: absolute;
   top: 0;
   left: 0;

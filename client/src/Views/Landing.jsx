@@ -3,7 +3,8 @@ import LoginForm from "../components/LoginForm/LoginForm";
 const Landing = () => {
 
     return (
-        <div className="container">
+        <div className="containerLanding">
+            <h1 className="h1landing">Games App</h1>
             <LoginForm />
         </div>
     )

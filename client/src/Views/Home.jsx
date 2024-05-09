@@ -3,9 +3,9 @@ import GamesCards from "../components/GamesCards/GamesCards";
 const Home = () => {
 
     return (
-        <div>
+        <div className="containerHome">
             <MenuBar />
-            <h1>Henry Videogames</h1>
+            <h1 className="h1home">Henry Videogames</h1>
             <div>
                 <GamesCards />
             </div>
