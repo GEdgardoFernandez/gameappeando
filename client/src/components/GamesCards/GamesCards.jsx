@@ -44,7 +44,7 @@ export default function GamesCards(param) {
       {
         games.map((param) => (
 
-          <CardGame key={param.id} name={param.name} image={param.background_image} genre={param.genres.name} />
+          <CardGame key={param.key} name={param.name} image={param.background_image} genre={param.genres.name} />
         ))
       }
     </div>

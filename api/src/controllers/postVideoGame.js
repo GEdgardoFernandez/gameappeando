@@ -2,13 +2,26 @@ const { Videogame } = require('../models/Videogame');
 
 const createVideogame = async (req, res) => {
   try {
-    const { name, description, platforms, /* otros datos necesarios */ } = req.body;
-    // Aquí puedes realizar la creación del videojuego en la base de datos utilizando Sequelize
-    // Asegúrate de manejar correctamente la relación con los géneros
-    res.status(201).json({ message: 'Videojuego creado exitosamente' });
+    const { name, description, genres, rating, released, platforms } = req.body;
+    if (!name || !description || !genres) {
+      return res.status(400).json({ message: 'Faltan datos obligatorios' });
+    }
+   
+      
+    Videogame.create({
+      name,
+      background_image,
+      description,
+      released,
+      rating,
+      platforms,
+      createdInDb
+  })
+
+    res.status(201).json(Videogame);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Error al crear el videojuego' });
+    console.log(error.message);
+    res.status(500).json({ error: 'Error al crear el videojuego' });
   }
 };
 

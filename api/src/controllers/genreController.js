@@ -1,11 +1,11 @@
 const axios = require('axios');
 const { Genre } = require('../db');
-const { API_KEY } = process.env;
+
 
 const getAllGenres = async (req, res) => {
     try {
 
-        const response = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`);
+        const response = await axios.get(`https://api.rawg.io/api/genres?key=${process.env.API_KEY}`);
         const genresFromAPI = response.data.results;
         for (const genreData of genresFromAPI) {
             const existingGenre = await Genre.findOne({ where: { name: genreData.name } });

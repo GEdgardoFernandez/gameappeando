@@ -5,7 +5,7 @@ const getAllVideogames = async (req, res) => {
   try {
     const URL = `https://api.rawg.io/api/games?key=${process.env.API_KEY}`;
     const response = await axios.get(URL);
-    const videogames = response.data.results.slice(0, 15);
+    const videogames = response.data.results.slice(0, 100);
     res.json(videogames);
   } catch (error) {
     console.error(error);
