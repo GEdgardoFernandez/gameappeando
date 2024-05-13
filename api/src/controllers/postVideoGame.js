@@ -2,23 +2,20 @@ const { Videogame } = require('../models/Videogame');
 
 const createVideogame = async (req, res) => {
   try {
-    const { name, description, genres, rating, released, platforms } = req.body;
-    if (!name || !description || !genres) {
+    const { name, genres, description, rating, released, platforms } = req.body;
+    console.log(name)
+/*     if (!name || !description || !genres) {
       return res.status(400).json({ message: 'Faltan datos obligatorios' });
-    }
+    } */
    
       
-    Videogame.create({
+    const newVideogame = await {
       name,
-      background_image,
+      genres,
       description,
-      released,
-      rating,
-      platforms,
-      createdInDb
-  })
-
-    res.status(201).json(Videogame);
+      
+    };
+    res.status(201).json(newVideogame);
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ error: 'Error al crear el videojuego' });

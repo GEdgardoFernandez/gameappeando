@@ -1,0 +1,66 @@
+#copyright {
+    width: 100%;
+    border-top: 5px solid rgba(255, 255, 255, 0.08);
+    background-color: rgba(0, 0, 0, 0.5);
+    position: end;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#copyright p {
+    display: inline;
+    letter-spacing: 1px;
+    font-size: 16px;
+    color: rgba(154, 205, 50, 0.2);
+
+}
+
+#copyright p:hover {
+    color: darkgreen;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.7s;
+    border-radius: 35%;
+    text-shadow: 0 0 50px rgba(255, 255, 255, 0.704), 0 0 20px rgba(255, 255, 255, 0.704), 0 0 15px rgba(255, 255, 255, 0.71);
+    background-color: rgba(186, 255, 47, 0.774);
+    box-shadow: 0 0 5px yellowgreen,
+        0 0 25px yellowgreen,
+        0 0 50px yellowgreen,
+        0 0 100px yellowgreen;
+    backdrop-filter: blur(50px);
+}
+
+#copyright a {
+    text-decoration: none;
+    color: white;
+}
+
+/*footer icon*/
+ul.contact {
+    list-style: none;
+}
+
+ul.contact li {
+    display: inline;
+    font-size: 1em;
+    padding: 10px;
+}
+
+ul.contact li span {
+    margin: 20px;
+}
+
+ul.contact li a {
+    color: white;
+}
+
+ul.contact li a:before {
+    display: inline;
+    background: #4c93b9;
+    line-height: 40px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+}

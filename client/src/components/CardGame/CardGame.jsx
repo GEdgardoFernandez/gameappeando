@@ -1,8 +1,13 @@
+
 import style from './CardGame.module.css';
 import { NavLink } from 'react-router-dom';
+
 export default function CardGame(param) {
     return (
+        
         <div className={style.containerCard}>
+            
+         
             <div className={style.imgcontainer}>
                 <img className={style.img} src={param.image} alt={param.name} />
             </div>
