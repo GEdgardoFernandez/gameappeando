@@ -1,138 +1,113 @@
-import axios from "axios";
+import axios from 'axios';
 
-//ACTIONS TYPE
-export const GET_ALL_VIDEOGAMES = 'GET_ALL_VIDEOGAMES';
-export const GET_ALL_GENRES = 'GET_ALL_GENRES';
-export const GET_VIDEOGAME_DETAILS = 'GET_VIDEOGAME_DETAILS';
-export const CREATE_VIDEOGAME = 'CREATE_VIDEOGAME';
-export const DELETE_VIDEOGAME = 'DELETE_VIDEOGAME';
-export const UPDATE_VIDEOGAME = 'UPDATE_VIDEOGAME';
-export const FILER_BY_GENRES = 'FILER_BY_GENRES';
-export const FILTER_BY_ASC_DESC = 'FILTER_BY_ASC_DESC';
-export const FILTER_BY_CREATED = 'FILTER_BY_CREATED';
-export const FILTER_BY_RAITING = 'FILTER_BY_RAITING';
-export const CLEAR_CACHE_VIDEOGAME = 'CLEAR_CACHE_VIDEOGAME';
-export const GET_NAME_VIDEOGAMES = 'GET_NAME_VIDEOGAMES';
-export const CLEAR_CACHE = 'CLEAR_CACHE';
+export const GET_ALL_GAMES = 'GET_ALL_GAMES'
+export const GET_GAME_ID = 'GET_GAME_ID'
+export const GET_GAME_NAME = 'GET_GAME_NAME'
+export const CREATE_GAME = 'CREATE_GAME'
+export const GET_GENRES = 'GET_GENRES'
+export const ORDER_BY_NAME = 'ORDER_BY_NAME'
+export const ORDER_BY_GENRES = 'ORDER_BY_NAME'
+export const ORDER_BY_RATING = 'ORDER_BY_NAME'
+export const ORDER_BY_SOURCE = 'ORDER_BY_NAME'
 
-//ACTIONS
+const RUTA_VIDEOGAMES = 'http://localhost:3001/videogames'
+const RUTA_GENRES = 'http://localhost:3001/genres'
 
-// cada actions va a retornar una funcion asincrona que tendra como parametro el dispatch, que despacha la accion requerida
-export const getAllVideogames = () => {
-  return async function(dispatch){
+export function getAllGames(){
+  return async function(dispatch) {
     try {
-      const json = await axios.get('http://localhost:3001/videogames')
-      return dispatch({type: GET_ALL_VIDEOGAMES, payload: json.data})
-    } catch (error) {
-      throw error
+      const response =  axios.get(`${RUTA_VIDEOGAMES}`)
+      const allVideoGames = response.data
+      dispatch({
+        type: GET_ALL_GAMES,
+        payload: allVideoGames
+      })
+    } catch (e) {
+      alert ('I cant get all the games',e.message)
     }
   }
-}
+};
 
-export const getAllGenres = () => {
-  return async function(dispatch){
+export function getGameID(id){
+  return async function(dispatch) {
     try {
-      const json = await axios.get('http://localhost:3001/genres')
-      return dispatch({type: GET_ALL_GENRES, payload: json.data})
-    } catch (error) {
-      throw error
+      const response =  axios.get(`${RUTA_VIDEOGAMES}/${id}`)
+      const videoGameID = response.data
+      dispatch({
+        type: GET_GAME_ID,
+        payload: videoGameID
+      })
+    } catch (e) {
+      alert ('I cant get that game',e.message)
     }
   }
-}
+};
 
-export const getNameVideogames = (name)=> {                //name === payload
-  return async function(dispatch){
+export function getGameName(id){
+  return async function(dispatch) {
     try {
-      const json = await axios.get(`http://localhost:3001/videogames?name=${name}`)
-      return dispatch({type: GET_NAME_VIDEOGAMES, payload: json.data})
-    } catch (error) {
-      throw error
+      const response =  axios.get(`${RUTA_VIDEOGAMES}?name=${name}`)
+      const videoGameName = response.data
+      dispatch({
+        type: GET_GAME_NAME,
+        payload: videoGameName
+      })
+    } catch (e) {
+      alert ('I cant get that game',e.message)
     }
   }
-}
+};
 
-export const getVideogameDetail = (id) => {
-  return async function(dispatch){
+export function createGame(payload){
+  return async function(dispatch) {
     try {
-      const json = await axios.get(`http://localhost:3001/videogames/${id}`);
-      return dispatch({type: GET_VIDEOGAME_DETAILS, payload: json.data})
-    } catch (error) {
-      throw error
+      const response =  axios.post(`${RUTA_VIDEOGAMES}}`, payload)
+      const videoGame = response.data
+      dispatch({
+        type: CREATE_GAME,
+        payload: videoGame
+      })
+    } catch (e) {
+      alert ('I cant create that game',e.message)
     }
   }
-}
+};
 
-export const createVideogame = (payload) => {
-  return async function(dispatch){
+export function getGameName(id){
+  return async function(dispatch) {
     try {
-      const response = await axios.post('http://localhost:3001/videogames', payload)
-      //console.log(response)
-      return response
-    } catch (error) {
-      throw error
+      const response =  axios.get(`${RUTA_GENRES}`)
+      const genres = response.data
+      dispatch({
+        type: GET_GE,
+        payload: genres
+      })
+    } catch (e) {
+      alert ('I cant get all the genres',e.message)
     }
   }
-}
+};
 
-export const deleteVideogame = (id) => {
-  return async function(dispatch){
-    try {
-      await axios.delete(`http://localhost:3001/videogames/${id}`)
-      return dispatch({type: DELETE_VIDEOGAME})
-    } catch (error) {
-      throw error
-    }
-  }
-}
+export function orderByName(payload) {
+   return function(dispatch) {
+    return dispatch({type: ORDER_BY_NAME, payload})
+   }
+};
 
-export const updateVideogame = (id, payload) => {
-  return async function(dispatch){
-    try {
-      const json = await axios.put(`http://localhost:3001/videogames/edit/${id}`, payload)
-      return dispatch({type: UPDATE_VIDEOGAME, payload: json.data})
-    } catch (error) {
-      throw error
-    }
+export function orderByGenres(payload) {
+  return function(dispatch) {
+   return dispatch({type: ORDER_BY_GENRES, payload})
   }
-}
+};
 
-export const filterVideogamesByGenres = (payload) => {
-  console.log("payload filter by genres", payload);
-  return{
-    type: FILER_BY_GENRES,
-    payload
+export function orderByRating(payload) {
+  return function(dispatch) {
+   return dispatch({type: ORDER_BY_RATING, payload})
   }
-}
+};
 
-export const filterByAscDesc = (payload)=> {
-  return{
-    type: FILTER_BY_ASC_DESC,
-    payload
+export function orderBySource(payload) {
+  return function(dispatch) {
+   return dispatch({type: ORDER_BY_SOURCE, payload})
   }
-}
-
-export const filterByCreated = (payload)=> {
-  return{
-    type: FILTER_BY_CREATED,
-    payload
-  }
-}
-
-export const filterByRaiting = (payload)=> {
-  return{
-    type: FILTER_BY_RAITING,
-    payload
-  }
-}
-
-export const ClearCacheVideogame = () => {
-  return{
-    type: CLEAR_CACHE_VIDEOGAME,
-  }
-}
-
-export const ClearAllVideogamesCache = () => {
-  return{
-    type: CLEAR_CACHE,
-  }
-}
+};

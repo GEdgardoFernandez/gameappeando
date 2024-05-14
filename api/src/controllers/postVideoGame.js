@@ -1,25 +1,39 @@
-const { Videogame } = require('../models/Videogame');
+const {Videogame, Genres } = require('../db.js');
 
-const createVideogame = async (req, res) => {
-  try {
-    const { name, genres, description, rating, released, platforms } = req.body;
-    console.log(name)
-/*     if (!name || !description || !genres) {
-      return res.status(400).json({ message: 'Faltan datos obligatorios' });
-    } */
-   
-      
-    const newVideogame = await {
+const createVideogame = async (req, res, next) => {
+  let { name, image, description, released, rating, platforms, genres } = req.body;
+  
+
+  //valido las propiedades obligatorias
+    if (!name || !description || !genres){
+      return res.status(404).send('Missing data')
+    }
+  
+    //valido
+    const searchGame = await Videogame.findAll({ where: {name: name}})
+    if(searchGame.length != 0) return res.send('That name already exists');
+  
+    try {
+       //si no existe lo creo
+    let gameCreate = await Videogame.create({
       name,
-      genres,
+      image: image ? image : 'Search a image, please',
       description,
-      
+      released: released ? released : 'Release date not found',
+      rating: rating ? rating : 0,
+      platforms: platforms ? platforms.toString() : 'Not yet available for platforms',
+  });
+  
+    let genre =  await Genres.findAll({
+    where: { name: genres }
+    });
+  
+    gameCreate.addGenres(genre);
+  
+    res.send('The video game was created successfully');
+  
+    } catch (e) {
+      return next(e)
     };
-    res.status(201).json(newVideogame);
-  } catch (error) {
-    console.log(error.message);
-    res.status(500).json({ error: 'Error al crear el videojuego' });
-  }
-};
-
+  };
 module.exports = createVideogame;

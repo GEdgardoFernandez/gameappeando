@@ -1,17 +1,42 @@
 const axios = require('axios');
+const getDBData = require('./getApiDataGame');
+const getApiData = require('./getApiDataGame');
+const { Videogame, Genres } = require ('../db')
+const { getGamesByName, getGamesByNameDB} = require ('./getGameByName');
 
-const getAllVideogames = async (req, res) => {
+const getAllVideogames = async (req, res, next) => {
+  const { name } = req.query;
+
   try {
-    const { page = 1, pageSize = 5 } = req.query;
-    const offset = (page - 1) * pageSize;
-    const URL = `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=${page}&page_size=${pageSize}`;
-    const response = await axios.get(URL);
-    const videogames = response.data.results;
-    const paginatedGames = videogames.slice(offset, offset + pageSize);
-    res.json(paginatedGames);
+    if (!name) {
+      let apiData = await getApiData();
+      let DBData = await getDBData();
+
+      if (!apiData && !DBData) {
+        console.log('No se encontraron datos');
+        return res.status(404).json({ msg: "No se encontraron datos" });
+      }
+
+      let allData = [...DBData, ...apiData];
+      console.log(allData.length + ' datos encontrados, se devuelven');
+      return res.status(200).json(allData);
+    } else {
+      let apiDataByName = await getGamesByName(name);
+      let DBDataByName = await getGamesByNameDB(name);
+
+      if (!apiDataByName && !DBDataByName) {
+        console.log('No se encontraron datos para el nombre proporcionado');
+        return res.status(404).json({ msg: "No se encontraron datos para el nombre proporcionado" });
+      }
+
+      let allDataByName = [...DBDataByName, ...apiDataByName];
+      let dataSlice = allDataByName.slice(0, 15);
+      console.log(dataSlice.length + ' datos encontrados para el nombre proporcionado');
+      return res.status(200).json(dataSlice);
+    }
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Error al obtener los videojuegos' });
+    console.error('Error al obtener los datos:', error.message);
+    return next(error);
   }
 };
 

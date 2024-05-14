@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   const Genre = sequelize.define('Genre', {
     id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
@@ -11,6 +11,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    
   });
 
   return Genre;

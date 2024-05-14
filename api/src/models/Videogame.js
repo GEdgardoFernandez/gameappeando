@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
   sequelize.define('videogame', {
-    id: {
+    id: { 
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
@@ -11,32 +11,27 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    image: {
+      type: DataTypes.TEXT,
+    },
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    platforms: {
-      type: DataTypes.STRING,
-    },
-    background_image: {
-      type: DataTypes.STRING,
-    },
-    genres: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false,
-    },
     released: {
-      type: DataTypes.DATE,
-      allowNull: false,
+      type: DataTypes.STRING,
     },
     rating: {
       type: DataTypes.FLOAT,
+    },
+    platforms: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    create: {
+    createdInDB: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
       defaultValue: true,
-    }
+      allowNull: false,
+    },
   });
 };
