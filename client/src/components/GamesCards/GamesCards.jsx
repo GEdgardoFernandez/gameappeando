@@ -1,56 +1,29 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import style from './GamesCards.module.css';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import CardGame from '../CardGame/CardGame';
 import Pagination from '../Pagination/Pagination';
-import { useLocation } from 'react-router-dom';
+import { getAllGames } from '../../Redux/Actions';
 
 export default function GamesCards() {
-  const location = useLocation();
-  const [games, setGames] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-
+  const dispatch = useDispatch();
   useEffect(() => {
-    const fetchGames = async () => {
-      try {
-        let url = '';
-        if (location.pathname === '/home') {
-          url = `http://localhost:3001/videogames?page=${currentPage}&pageSize=15`; // Agrega los parámetros de paginación
-        } else if (location.pathname === '/genres') {
-          url = `http://localhost:3001/genres?page=${currentPage}&pageSize=10`; // Agrega los parámetros de paginación
-        }
-        const response = await axios.get(url);
-        const games = response.data;
-        const { totalPages } = response.data
-        setTotalPages(totalPages);
-        setGames(games);
-      } catch (error) {
-        console.error('Error fetching games:', error);
-      }
-    };
-    fetchGames();
-  }, [location.pathname, currentPage]);
+    dispatch(getAllGames());
+  }, [dispatch]);
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-  const allGames = games.length;
-  const gamesPerPage = 15;
-
+  const Allgames = useSelector(state => state.videogames); // Accede al estado de los juegos desde Redux
+  const games = Allgames.slice(0, 15); // Obtiene solo los primeros 15 elementos de la lista de juegos
+  console.log(games)
   return (
     <div className={style.containerCards}>
-      <Pagination
-        gamesPerPage={gamesPerPage}
-        allVideoGames={allGames}
-        totalPages={totalPages}
-      />
-      {games.map((game) => (
+       {/* Verificar si la lista de juegos está definida antes de mapearla */}
+       {games?.map(g => (
         <CardGame
-          key={game.key}
-          name={game.name}
-          image={game.image}
-          genre={game.genres.join(', ')}
+          key={g.id} // Asegúrate de incluir una clave única para cada elemento en el array mapeado
+          id={g.id}
+          name={g.name}
+          image={g.image}
+          genre={g.genres.join(', ')}
         />
       ))}
     </div>

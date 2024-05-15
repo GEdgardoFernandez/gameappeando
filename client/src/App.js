@@ -17,7 +17,7 @@ function App() {
         <Route estrict path='/home' element={<Home />} />
         <Route estrict path='/genres' element={<Genres /> } />
         <Route estrict path='/plataforms' element={<Plataforms />} />
-        <Route estrict path='/details' element={<Details />} />
+        <Route estrict path='/details/:key' element={<Details />} />
         <Route estrict path='/about' element={<About />} />
       </Routes>
     </div>

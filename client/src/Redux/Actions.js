@@ -16,7 +16,7 @@ const RUTA_GENRES = 'http://localhost:3001/genres'
 export function getAllGames(){
   return async function(dispatch) {
     try {
-      const response =  axios.get(`${RUTA_VIDEOGAMES}`)
+      const response = await axios.get(`${RUTA_VIDEOGAMES}`)
       const allVideoGames = response.data
       dispatch({
         type: GET_ALL_GAMES,
@@ -31,6 +31,7 @@ export function getAllGames(){
 export function getGameID(id){
   return async function(dispatch) {
     try {
+      console.log(id)
       const response =  axios.get(`${RUTA_VIDEOGAMES}/${id}`)
       const videoGameID = response.data
       dispatch({
@@ -43,7 +44,7 @@ export function getGameID(id){
   }
 };
 
-export function getGameName(id){
+export function getGameName(name){
   return async function(dispatch) {
     try {
       const response =  axios.get(`${RUTA_VIDEOGAMES}?name=${name}`)
@@ -73,20 +74,6 @@ export function createGame(payload){
   }
 };
 
-export function getGameName(id){
-  return async function(dispatch) {
-    try {
-      const response =  axios.get(`${RUTA_GENRES}`)
-      const genres = response.data
-      dispatch({
-        type: GET_GE,
-        payload: genres
-      })
-    } catch (e) {
-      alert ('I cant get all the genres',e.message)
-    }
-  }
-};
 
 export function orderByName(payload) {
    return function(dispatch) {

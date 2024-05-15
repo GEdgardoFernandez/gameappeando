@@ -11,22 +11,22 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    image: {
-      type: DataTypes.TEXT,
-    },
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
+    },
+    platforms: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    image: {
+      type: DataTypes.TEXT,
     },
     released: {
       type: DataTypes.STRING,
     },
     rating: {
       type: DataTypes.FLOAT,
-    },
-    platforms: {
-      type: DataTypes.STRING,
-      allowNull: false,
     },
     createdInDB: {
       type: DataTypes.BOOLEAN,
