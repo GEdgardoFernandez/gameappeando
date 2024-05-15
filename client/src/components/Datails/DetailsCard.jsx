@@ -3,17 +3,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import {useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getGameID } from '../../Redux/Actions';
-const DetailsCard = () => {
-    const { id } = useParams()
+const DetailsCard = (params) => {
+    const path = window.location.pathname;
+    const idPath = path.split('/').pop();
+    console.log(idPath)
     const dispatch = useDispatch()
-    const gameDetails = useSelector(state => state.videogame);
+    const { id } = useParams()
+    console.log(id, params.id)
     useEffect(() => {
-        dispatch(getGameID(id));
-      }, [dispatch, id]);
-
+        dispatch(getGameID(idPath));
+      }, [dispatch, idPath]);
+    const gameDetails = useSelector(state => state.videogame);
     if (!gameDetails) {
         return <div>Cargando detalles...</div>;
     };  
+    
+
 
     return (
         
@@ -39,9 +44,9 @@ const DetailsCard = () => {
             <div>
                 <p>{gameDetails.rating}</p>
             </div>
- {/*            <div>
+{/*            <div>
                 <p>{gameDetails.genres.join(', ')}</p>
-            </div> */}
+            </div>  */}
         </div>
     )
 }

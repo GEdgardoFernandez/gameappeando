@@ -3,10 +3,10 @@ require('dotenv').config();
 const {API_KEY} = process.env;
 const { Videogame, Genres } = require ('../db')
 
-const getGameById = async (req, res) => {
+const getGameById = async (req, res, next) => {
+  const { id } = req.params;
     try {
-        //pregunto si el id posee un -, ya que los ids creados con uudi4 los poseen y los de la API no
-        if(id.includes('-')){
+      if(String(id).includes('-')){
          let searchDB = await Videogame.findOne({
            where: {id: id},
            include: {
@@ -14,6 +14,7 @@ const getGameById = async (req, res) => {
              attributes: ['name']
            }
          })
+         // Normaliza los datos para que platforms siempre sea un array de strings
          let foundGameDB = {
                id: searchDB.id,
                name: searchDB.name,
@@ -21,11 +22,11 @@ const getGameById = async (req, res) => {
                description: searchDB.description,
                released: searchDB.released,
                rating: searchDB.rating,
-               platforms: [ searchDB.platforms ],
+               platforms: searchDB.platforms[0].split(','),
                genres: searchDB.genres.map(g => g.name),
          }
-         return foundGameDB
-        }
+         return res.status(200).json(foundGameDB)
+        } else {
         let searchApiId = await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
         let foundGameApi = {
                id: searchApiId.data.id,
@@ -36,17 +37,17 @@ const getGameById = async (req, res) => {
                platforms: searchApiId.data.platforms.map(p => p.platform.name),
                genres: searchApiId.data.genres.map(g => g.name)
         }
-        return foundGameApi
-   
+        return res.status(200).json(foundGameApi)
+      }
      } catch (e) {
        console.log(e)
+       throw e // Lanza el error para que pueda ser manejado por getDataID
      }
    };
-   
-   module.exports = async function getDataID(req, res, next) {
+
+const getDataID = async (req, res, next) => {
      try {
-       const { id } = req.params;
-       let game =  await searchID(id);
+       let game =  await getGameById(id);
        if(!game) return res.status(404).json({ msg:"We couldn't find your game" });
        return res.status(200).json(game)
      } catch (e) {
@@ -54,4 +55,4 @@ const getGameById = async (req, res) => {
      };
    };
 
-module.exports = getGameById;
+module.exports = { getGameById, getDataID };

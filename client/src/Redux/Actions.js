@@ -29,11 +29,12 @@ export function getAllGames(){
 };
 
 export function getGameID(id){
+  console.log( id)
   return async function(dispatch) {
     try {
-      console.log(id)
-      const response =  axios.get(`${RUTA_VIDEOGAMES}/${id}`)
+      const response = await axios.get(`${RUTA_VIDEOGAMES}/${id}`)
       const videoGameID = response.data
+      
       dispatch({
         type: GET_GAME_ID,
         payload: videoGameID
