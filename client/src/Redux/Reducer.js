@@ -31,8 +31,8 @@ function rootReducer(state = inicialSate, action){
         platforms: Array.from(new Set(platforms))
         
       }
-
       break;
+      
       case GET_GAME_ID:
         return{
           ...state,//copia estado importante no olvidar

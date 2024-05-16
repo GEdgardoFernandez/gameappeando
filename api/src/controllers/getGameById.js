@@ -31,7 +31,9 @@ const getGameById = async (req, res, next) => {
         let foundGameApi = {
                id: searchApiId.data.id,
                name: searchApiId.data.name,
-               image: searchApiId.data.image,
+               img: searchApiId.data.background_image,
+               image: searchApiId.data.background_image_additional,
+               description: searchApiId.data.description,
                released: searchApiId.data.released,
                rating: searchApiId.data.rating,
                platforms: searchApiId.data.platforms.map(p => p.platform.name),
