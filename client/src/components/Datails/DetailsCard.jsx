@@ -1,6 +1,6 @@
 import style from './DetailsCard.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getGameID } from '../../Redux/Actions';
 const DetailsCard = (params) => {
@@ -21,31 +21,49 @@ const DetailsCard = (params) => {
     console.log(gameDatails.platforms)
     return (
 
-        <div className={style.container}>
-            <div>
+        <div className={style.containerDetails}>
+            <div className={style.btnContainer}>
                 <button className={style.btn} onClick={() => window.history.back()}>Back</button>
             </div>
             <div>
-                <h3 className={style.title}>{gameDatails.name}</h3>
+                <h3 className={style.name}>{gameDatails.name}</h3>
             </div>
             <div className={style.imgcontainer}>
-                <img src={gameDatails.img} alt={gameDatails.name} />
-                <img src={gameDatails.image} alt={gameDatails.name} />
+                <img src={gameDatails.img} alt={gameDatails.name} className={style.image} />
+                <img src={gameDatails.image} alt={gameDatails.name} className={style.image} />
             </div>
             <div>
-                <h4>{gameDatails.platforms}</h4>
+                <h3 className={style.title}>Platforms</h3>
+                <div className={style.ulPlatforms}>
+                    {gameDatails.platforms?.map(p => <ul><li className={style.liPlatform}>{p}</li></ul>)}
+                </div>
             </div>
             <div>
-                {gameDatails.description}
+                <h3 className={style.title}>Description</h3>
+                <div>
+                    <p className={style.description}>{gameDatails.description}</p>
+                </div>
+            </div>
+
+            <div className={style.containerDat}>
+                <div>
+                    <h3 className={style.title}>Released</h3>
+                    <div>
+                        <p className={style.description}>{gameDatails.released}</p>
+                    </div>
+                </div>
+            <div>
+                <h3 className={style.title}>Rating</h3>
+                <div>
+                    <p className={style.description}>{gameDatails.rating}</p>
+                </div>
+            </div>
             </div>
             <div>
-                <p>{gameDatails.released}</p>
-            </div>
-            <div>
-                <p>{gameDatails.rating}</p>
-            </div>
-            <div>
-                <p>{gameDatails.genres}</p>
+                <h3 className={style.title}>Genres</h3>
+                <div className={style.ulPlatforms} >
+                    {gameDatails.genres?.map(g => <ul className={style.ulPlatforms}><li className={style.liPlatform}>{g}</li></ul>)}
+                </div>
             </div>
         </div>
     )

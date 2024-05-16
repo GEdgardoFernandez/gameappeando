@@ -30,7 +30,7 @@ const getAllVideogames = async (req, res, next) => {
       }
 
       let allDataByName = [...DBDataByName, ...apiDataByName];
-      let dataSlice = allDataByName.slice(0, 15);
+      let dataSlice = allDataByName.slice(0, 100);
       console.log(dataSlice.length + ' datos encontrados para el nombre proporcionado');
       return res.status(200).json(dataSlice);
     }
