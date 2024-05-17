@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getGameID } from '../../Redux/Actions';
+import Loading from '../Loading/Loading';
 const DetailsCard = (params) => {
     const path = window.location.pathname;
     const idPath = path.split('/').pop();
@@ -15,8 +16,8 @@ const DetailsCard = (params) => {
         dispatch(getGameID(id));
     }, [dispatch, id]);
 
-    if (!gameDatails) {
-        return <div>Cargando detalles...</div>;
+    if (gameDatails.lenght === 0) {
+        return <div className={style.loadingContainer}><Loading /></div>;
     };
     console.log(gameDatails.platforms)
     return (
