@@ -1,7 +1,7 @@
 const { Videogame } = require('../models/Videogame');
 
 const getVideogamesByName = async (req, res, name) => {
-  let searchAPIData = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${name}`);
+  let searchAPIData = await axios.get(`https://api.rawg.io/api/games/${name}?key=${API_KEY}`);
   let apiData = [];
   searchAPIData.data.results.map(d => {
     apiData.push(
