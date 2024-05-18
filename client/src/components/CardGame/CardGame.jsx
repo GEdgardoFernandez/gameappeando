@@ -11,11 +11,6 @@ export default function CardGame(params) {
             <div className={style.textcontainer}>
                 <h3 className={style.title}>{params.name}</h3>
                 <h3 className={style.title}>{params.genre}</h3>
-                <NavLink
-                        to={`/details/${params.id}`}
-                        className={style.detailLink}
-                    >More Details
-                </NavLink>
             </div>
         </div>
         
