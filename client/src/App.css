@@ -13,16 +13,16 @@
 }
 
 .h1home {
-  font-family: "Blox";
-  font-size: 50px;
-  color: rgba(236, 79, 44, 0.8);
-  text-shadow: #000000 2px 0 20px;
+  font-family: "Bubble";
+  font-size: 40px;
+  color: rgba(169, 236, 44, 0.5);
+  text-shadow: #fa16c1 2px 0 20px;
   margin: 40px;
 }
 .h1landing {
   font-family: "Blox";
   font-size: 50px;
-  color: rgba(236, 79, 44, 0.8);
+  color: rgba(236, 79, 44, 0.6);
   text-shadow: #49ea09 1px 0 10px;
 }
 

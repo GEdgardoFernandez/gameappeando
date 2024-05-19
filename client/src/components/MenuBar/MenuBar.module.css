@@ -52,6 +52,7 @@ text-shadow: #f21dd2 1px 0 10px;
 
 .btn:hover {
   text-shadow: -1px -1px 0px #2ff21d, 1px 1px 0px #E94BE8;
+  cursor: pointer;
 }
 
 .btn:hover {

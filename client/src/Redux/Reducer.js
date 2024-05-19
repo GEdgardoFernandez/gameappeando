@@ -26,7 +26,6 @@ function rootReducer(state = inicialSate, action){
       action.payload.map(e => platforms = [...platforms, ...e.platforms]);
       return {
         ...state,
-        allVideoGames: action.payload,
         videogames: action.payload,
         platforms: Array.from(new Set(platforms))
         

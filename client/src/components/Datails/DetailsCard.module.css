@@ -6,9 +6,9 @@
     justify-content: center;
     flex-wrap: wrap;
     background-image:  url("..//..//assets/Img/fondoForest.jpg");
-    background-size: cover;
+    background-size: 100% 100%;
     width: 100%;
-    height: 100%;
+    height: 100vw;
 
 }
 .loadingContainer {
@@ -154,6 +154,7 @@ text-shadow: #f21dd2 1px 0 10px;
 
 .btn:hover {
   text-shadow: -1px -1px 0px #2ff21d, 1px 1px 0px #E94BE8;
+  cursor: pointer;
 }
 
 .btn:hover {
