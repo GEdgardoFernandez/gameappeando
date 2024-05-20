@@ -5,6 +5,7 @@ import CardGame from '../CardGame/CardGame';
 import Pagination from '../Pagination/Pagination';
 import { getAllGames } from '../../Redux/Actions';
 import Loading from '../Loading/Loading';
+import SearchBar from '../SearchBar/SearchBar';
 
 export default function GamesCards() {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ export default function GamesCards() {
     dispatch(getAllGames());
   }, [dispatch]);
 
-  const Allgames = useSelector(state => state.videogames); // Accede al estado de los juegos desde Redux
+  const Allgames = useSelector(state => state.filteredGames); // Accede al estado de los juegos desde Redux
     // Calcula los juegos actuales
     const [currentPage, setCurrentPage] = useState(1);
     const gamesPerPage = 15;
@@ -35,6 +36,9 @@ export default function GamesCards() {
   return (
     
     <div className={style.containerCards}>
+      <div>
+        <SearchBar />
+      </div>
       {/* Verificar si la lista de juegos está definida antes de mapearla */}
       {games?.map(g => (
         <CardGame

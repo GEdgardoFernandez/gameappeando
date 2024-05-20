@@ -1,5 +1,5 @@
-const { Videogame } = require('../models/Videogame');
 
+const { Videogame, Genre } = require ('../db')
 const getVideogamesByName = async (req, res, name) => {
   let searchAPIData = await axios.get(`https://api.rawg.io/api/games/${name}?key=${API_KEY}`);
   let apiData = [];
@@ -29,7 +29,7 @@ const getGameByNameDB = async (req, res, name) => {
       }
     },
     include: [{
-      model: Genres,
+      model: Genre,
       attributes: ['name']
     }]
   })

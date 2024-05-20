@@ -1,31 +1,36 @@
 import style from './SearchBar.module.css';
 import { getGameName } from '..//..//Redux/Actions'
-import {useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react';
 import OrderGenre from '../OrderGenre/OrderGenre';
 
-export default function SearchBar({onSearch}) {
+export default function SearchBar() {
     const dispatch = useDispatch();
-    const [game, setGame] = useState('');
-    function handleChange (event){
-        setGame(event.target.value)
+    const [searchTerm, setSearchTerm] = useState('');
+  
+    const handleInputChange = (e) => {
+      setSearchTerm(e.target.value);
     };
-    useEffect(()=>{
-        dispatch( getGameName(game))
-    }, [dispatch]);
-
-    function handleSubmit(event){
-        event.preventDefault();
-        onSearch(game);
+  
+    const handleSearch = (e) => {
+      e.preventDefault();
+      dispatch(getGameName(searchTerm));
     };
-    console.log(game)
+  
     return (
         <div className={style.container}>
-            <form action="submit">
-                <input type="text" placeholder='Search game...' className={style.input}/>
-                <button type='submit' className={style.buttonS}>Search</button>
-            </form>
-            <OrderGenre/>
-        </div>
-    )
-}
+     <form onSubmit={handleSearch} className={style.searchBar}>
+      <input
+        type="text"
+        placeholder="Search games..."
+        value={searchTerm}
+        onChange={handleInputChange}
+        className={style.input}
+      />
+      <button type="submit" className={style.buttonS}>Search</button>
+    </form>
+      <OrderGenre/>
+      </div>
+    );
+    
+  };

@@ -10,7 +10,6 @@ const navigate = useNavigate();
             <button className={style.btn} onClick={() => navigate('/genres')}>Genres</button>
             <button className={style.btn} onClick={() => navigate('/plataforms')} >Add Game</button>
             <button className={style.btn} onClick={() => navigate('/about')}>About</button>
-            <SearchBar onSearch={onSearch}/>
         </div>
     )
 }

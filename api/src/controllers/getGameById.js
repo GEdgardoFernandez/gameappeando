@@ -1,7 +1,7 @@
 const axios = require ('axios');
 require('dotenv').config();
 const {API_KEY} = process.env;
-const { Videogame, Genres } = require ('../db')
+const { Videogame, Genre } = require ('../db')
 
 const getGameById = async (req, res, next) => {
   const { id } = req.params;
@@ -10,7 +10,7 @@ const getGameById = async (req, res, next) => {
          let searchDB = await Videogame.findOne({
            where: {id: id},
            include: {
-             model: Genres,
+             model: Genre,
              attributes: ['name']
            }
          })

@@ -34,5 +34,6 @@
 .buttonS:hover {
     text-shadow: #8d0909de 1px 0 10px; 
     background-color: rgba(246, 16, 227, 0.705);
+    color: white;
     cursor: pointer;
 }

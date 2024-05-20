@@ -9,6 +9,7 @@ export const ORDER_BY_NAME = 'ORDER_BY_NAME'
 export const ORDER_BY_GENRES = 'ORDER_BY_NAME'
 export const ORDER_BY_RATING = 'ORDER_BY_NAME'
 export const ORDER_BY_SOURCE = 'ORDER_BY_NAME'
+export const SEARCH_GAMES_BY_NAME = 'SEARCH_GAMES_BY_NAME'
 
 const RUTA_VIDEOGAMES = 'http://localhost:3001/videogames'
 const RUTA_GENRES = 'http://localhost:3001/genres'
@@ -21,6 +22,7 @@ export function getAllGames(){
       dispatch({
         type: GET_ALL_GAMES,
         payload: allVideoGames
+        
       })
     } catch (e) {
       alert ('I cant get all the games',e.message)
@@ -32,7 +34,7 @@ export function getGameID(id){
   console.log( id)
   return async function(dispatch) {
     try {
-      const response = await axios.get(`${RUTA_VIDEOGAMES}/${id}`)
+      const response = await axios.get(`${RUTA_VIDEOGAMES}?name=${id}`)
       const videoGameID = response.data
       
       dispatch({
@@ -45,22 +47,20 @@ export function getGameID(id){
   }
 };
 
-export function getGameName(name){
-  console.log(name)
-  return async function(dispatch) {
+export function getGameName(name) {
+  return async function (dispatch) {
     try {
-      const response =  axios.get(`${RUTA_VIDEOGAMES}?name=${name}`)
-      const videoGameName = response.data.slice(0, 15)
+      const response = await axios.get(`${RUTA_VIDEOGAMES}/?${name}`);
+      const videoGameName = response.data.slice(0, 15);
       dispatch({
         type: GET_GAME_NAME,
-        payload: videoGameName
-      })
+        payload: videoGameName,
+      });
     } catch (e) {
-      alert ('I cant get that game',e.message)
+      console.error('I can\'t get that game', e.message);
     }
-  }
-};
-
+  };
+}
 export function createGame(payload){
   return async function(dispatch) {
     try {

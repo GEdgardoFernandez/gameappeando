@@ -7,11 +7,12 @@ import {
   ORDER_BY_NAME,
   ORDER_BY_GENRES,
   ORDER_BY_RATING,
-  ORDER_BY_SOURCE
+  ORDER_BY_SOURCE,
+  SEARCH_GAMES_BY_NAME
 } from './Actions';
 
 const inicialSate = {
-  allVideoGames: [],
+  filteredGames: [],
   videogames: [],
   videogame: [],
   genres: [],
@@ -27,7 +28,8 @@ function rootReducer(state = inicialSate, action){
       return {
         ...state,
         videogames: action.payload,
-        platforms: Array.from(new Set(platforms))
+        platforms: Array.from(new Set(platforms)),
+        filteredGames: action.payload
         
       }
       break;
@@ -38,11 +40,17 @@ function rootReducer(state = inicialSate, action){
           videogame: action.payload
         }
         break;
+        case SEARCH_GAMES_BY_NAME:
+          return {
+            ...state,
+            filteredGames: action.payload
+          };
+          break;
         case GET_GAME_NAME:
-        return{
-          ...state,
-          allVideoGames: action.payload
-        }
+          return {
+            ...state,
+            filteredGames: action.payload
+          };
         break;
         case CREATE_GAME:
         return{
