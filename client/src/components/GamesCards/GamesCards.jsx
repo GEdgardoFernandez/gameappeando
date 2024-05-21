@@ -9,9 +9,7 @@ import SearchBar from '../SearchBar/SearchBar';
 
 export default function GamesCards() {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllGames());
-  }, [dispatch]);
+
 
   const Allgames = useSelector(state => state.filteredGames); // Accede al estado de los juegos desde Redux
     // Calcula los juegos actuales
@@ -24,7 +22,9 @@ export default function GamesCards() {
   console.log(games)
   
  
-
+  useEffect(() => {
+    dispatch(getAllGames());
+  }, [dispatch]);
   // Cambia de página
   const paginate = pageNumber => setCurrentPage(pageNumber);
   if (games.length === 0) {

@@ -50,7 +50,7 @@ export function getGameID(id){
 export function getGameName(name) {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`${RUTA_VIDEOGAMES}/?${name}`);
+      const response = await axios.get(`${RUTA_VIDEOGAMES}/${name}`);
       const videoGameName = response.data.slice(0, 15);
       dispatch({
         type: GET_GAME_NAME,
