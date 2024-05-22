@@ -9,19 +9,14 @@ import SearchBar from '../SearchBar/SearchBar';
 
 export default function GamesCards() {
   const dispatch = useDispatch();
-
-
   const Allgames = useSelector(state => state.filteredGames); // Accede al estado de los juegos desde Redux
-    // Calcula los juegos actuales
-    const [currentPage, setCurrentPage] = useState(1);
-    const gamesPerPage = 15;
-    const indexOfLastGame = currentPage * gamesPerPage;
-    const indexOfFirstGame = indexOfLastGame - gamesPerPage;
-   
-  const games = Allgames.slice(indexOfFirstGame, indexOfLastGame); // Obtiene solo los primeros 15 elementos de la lista de juegos
+  // Calcula los juegos actuales
+  const [currentPage, setCurrentPage] = useState(1);
+  const gamesPerPage = 20;
+  const indexOfLastGame = currentPage * gamesPerPage;
+  const indexOfFirstGame = indexOfLastGame - gamesPerPage;
+  const games = Allgames.slice(indexOfFirstGame, indexOfLastGame);
   console.log(games)
-  
- 
   useEffect(() => {
     dispatch(getAllGames());
   }, [dispatch]);
@@ -34,7 +29,7 @@ export default function GamesCards() {
     </div>
   }
   return (
-    
+
     <div className={style.containerCards}>
       <div>
         <SearchBar />

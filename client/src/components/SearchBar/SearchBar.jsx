@@ -2,7 +2,7 @@ import style from './SearchBar.module.css';
 import { getGameName } from '..//..//Redux/Actions'
 import { useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react';
-import OrderGenre from '../OrderGenre/OrderGenre';
+import OrderGenre from '../OrderGenre/OrderGenre.jsx';
 
 export default function SearchBar() {
     const dispatch = useDispatch();

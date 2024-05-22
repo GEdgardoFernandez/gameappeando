@@ -34,7 +34,7 @@ export function getGameID(id){
   console.log( id)
   return async function(dispatch) {
     try {
-      const response = await axios.get(`${RUTA_VIDEOGAMES}?name=${id}`)
+      const response = await axios.get(`${RUTA_VIDEOGAMES}/${id}`)
       const videoGameID = response.data
       
       dispatch({

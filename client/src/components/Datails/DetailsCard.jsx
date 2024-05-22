@@ -17,7 +17,7 @@ const DetailsCard = (params) => {
     }, [dispatch, id]);
 
     if (gameDatails.length === 0) {
-        return <div className={style.loadingContainer}><Loading /></div>;
+        return <div className={style.loadingContainer}><div className={style.center}><Loading /></div></div>;
     };
     console.log(gameDatails.platforms)
     return (

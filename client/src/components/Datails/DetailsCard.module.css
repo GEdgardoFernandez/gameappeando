@@ -12,11 +12,16 @@
 
 }
 .loadingContainer {
+  height: 100vw;
+  width: 100%;
+  background-image:  url("..//..//assets/Img/fondoForest.jpg");
+  background-size: 100% 100%;
+}
+.center{
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 100%;
-  width: 100%;
+  border-top: 200px;
 }
 .imageContainer {
     width: 100%;
@@ -110,11 +115,11 @@
 }
 
 .btnContainer{
-    margin: 10px;
+    margin: 5px;
 }
 .btn,
 .btn::after {
-  padding: 10px 50px;
+  padding: 10px 30px;
   font-size: 20px;
   border: none;
   border-radius: 5px;
@@ -123,7 +128,7 @@
   position: relative;
   font-family: "Bubble";
 background-color: none;
-text-shadow: #f21dd2 1px 0 10px;
+text-shadow: #1df2e0 1px 0 10px;
 }
 
 .btn::after {
@@ -159,8 +164,8 @@ text-shadow: #f21dd2 1px 0 10px;
 
 .btn:hover {
   background-color: transparent;
-  border: 1px solid rgb(229, 255, 0);
-  box-shadow: 0px 10px 10px -10px rgb(44, 208, 35);
+  border: 0.5px solid rgba(229, 255, 0, 0.5);
+  box-shadow: 0px 10px 10px -3px rgb(0, 0, 0);
 }
 
 @keyframes glitch_4011 {
