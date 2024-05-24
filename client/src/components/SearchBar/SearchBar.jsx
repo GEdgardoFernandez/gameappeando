@@ -11,15 +11,18 @@ export default function SearchBar() {
     const handleInputChange = (e) => {
       setSearchTerm(e.target.value);
     };
-  
-    const handleSearch = (e) => {
-      e.preventDefault();
+  console.log(searchTerm)
+    const handleSearch = () => {
+      if(searchTerm === '' || searchTerm.charCodeAt === 32){
+        return alert('Please enter a valid game name')
+      }
       dispatch(getGameName(searchTerm));
+      setSearchTerm('')
     };
-  
+    
     return (
         <div className={style.container}>
-     <form onSubmit={handleSearch} className={style.searchBar}>
+  
       <input
         type="text"
         placeholder="Search games..."
@@ -27,8 +30,7 @@ export default function SearchBar() {
         onChange={handleInputChange}
         className={style.input}
       />
-      <button type="submit" className={style.buttonS}>Search</button>
-    </form>
+      <button onClick={handleSearch} className={style.buttonS}>Search</button>
       <OrderGenre/>
       </div>
     );

@@ -1,57 +1,60 @@
 const op = require('sequelize').Op;
 const { Videogame, Genre } = require('../db')
-const getVideogamesByName = async (req, res, name) => {
-  let searchAPIData = await axios.get(`https://api.rawg.io/api/games/${name}?key=${API_KEY}`);
-  let apiData = [];
-  if (searchAPIData.data.platforms && searchAPIData.data.genres && searchAPIData.data.id) {
-  searchAPIData.data.results.map(d => {
-    let platforms = d.platforms ? d.platforms.map(p => p.platform.name) : [];
-    let genres = d.genres ? d.genres.map(g => g.name) : [];
-    
-    apiData.push(
-      {
-        id: d.id,
-        name: d.name,
-        image: d.background_image,
-        description: d.description_raw,
-        released: d.released,
-        rating: d.rating,
-        platforms: platforms,
-        genres: genres,
-        createdInDB: d.createdInDB
+const getVideogamesByName = async (req, res) => {
+  const { name } = req.params;
+  if (!name) {
+    return res.status(404).send('Query parameter name is required')
+  }
+  try {
+    console.log(`Searching for games with name: ${name}`);
+
+    let apiResponse = await axios.get(`https://api.rawg.io/api/games?key=31b8a402bc5a4f928521cc08b5d4b639&&search=${name}`)
+    const apiGames = apiResponse.data.results ? apiResponse.data.results.map(game => ({
+      id: game.id,
+      name: game.name,
+      released: game.released,
+      rating: game.rating,
+      image: game.background_image,
+      platforms: game.platforms ? game.platforms.map(p => p.platform.name) : [],
+      genres: game.genres ? game.genres.map(g => g.name) : [],
+    })) : [];
+
+    console.log('API Games:', apiGames);
+
+    const getGameByNameDB = await Videogame.findAll({
+      where: {
+        name: { [op.iLike]: `%${name}%` }
+      },
+      include: {
+        model: Genre,
+        attributes: ['name']
       }
-    );
-  });
+    })
+    console.log('DB Games:', getGameByNameDB);
+    const dbGamesFormatted = dbGames.map(game => ({
+      id: game.id,
+      name: game.name,
+      released: game.released,
+      rating: game.rating,
+      image: game.image,
+      platforms: game.platforms?.map(p => p.name), // Asume que tienes plataformas en la base de datos
+      genres: game.genres.map(g => g.name),
+  }));
+  console.log('DB Games Formatted:', dbGamesFormatted);
+        // Combinar resultados y obtener los primeros 15
+        const allGames = [...apiGames, ...dbGamesFormatted].slice(0, 15);
+
+        if (allGames.length === 0) {
+            return res.status(404).send('No games found with that name');
+        }
+
+        return allGames;
+
+  }catch (error) {
+    console.error('Error in getGameByName:', error);
+    res.status(500).send('Error retrieving games');
 }
-  console.log(apiData.length + ' datos encontrados, se devuelven ');
-  return apiData
+
 };
 
-const getGameByNameDB = async (req, res, name) => {
-  const searchGame = await Videogame.findAll({
-    where: {
-      name: {
-        [op.iLike]: `%${name}%`
-      }
-    },
-    include: [{
-      model: Genre,
-      attributes: ['name']
-    }]
-  })
-  let NamegameDB = searchGame.map(d => {
-    return {
-      id: d.id,
-      name: d.name,
-      image: d.image,
-      released: d.released,
-      rating: d.rating,
-      platforms: d.platforms,
-      genres: d.genres.map(g => g.name),
-      createdInDB: d.createdInDB
-    }
-  })
-  return NamegameDB
-}
-
-module.exports = getVideogamesByName, getGameByNameDB;
+module.exports = getVideogamesByName;

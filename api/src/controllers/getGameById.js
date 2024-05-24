@@ -1,7 +1,7 @@
 const axios = require ('axios');
 require('dotenv').config();
 const {API_KEY} = process.env;
-const { Videogame, Genre } = require ('../db')
+const { Videogame, Genres } = require ('../db')
 
 const getGameById = async (req, res, next) => {
   const { id } = req.params;
@@ -10,7 +10,7 @@ const getGameById = async (req, res, next) => {
          let searchDB = await Videogame.findOne({
            where: {id: id},
            include: {
-             model: Genre,
+             model: Genres,
              attributes: ['name']
            }
          })
@@ -28,6 +28,18 @@ const getGameById = async (req, res, next) => {
          return res.status(200).json(foundGameDB)
         } else {
         let searchApiId = await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
+        const platform = [];
+        const genres = [];
+        if (searchApiId.data.platforms) {
+          for (let i = 0; i < searchApiId.data.platforms.length; i++) {
+            platform.push(searchApiId.data.platforms[i].platform.name);
+          }
+        }
+        if (searchApiId.data.genres) {
+          for (let i = 0; i < searchApiId.data.genres.length; i++) {
+            genres.push(searchApiId.data.genres[i].name);
+          }
+        }
         let foundGameApi = {
                id: searchApiId.data.id,
                name: searchApiId.data.name,
@@ -36,8 +48,8 @@ const getGameById = async (req, res, next) => {
                description: searchApiId.data.description,
                released: searchApiId.data.released,
                rating: searchApiId.data.rating,
-               platforms: searchApiId.data.platforms.map(p => p.platform.name),
-               genres: searchApiId.data.genres.map(g => g.name)
+               platforms: platform,
+               genres: genres
         }
         return res.status(200).json(foundGameApi)
       }

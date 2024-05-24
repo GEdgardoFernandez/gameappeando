@@ -36,7 +36,7 @@ export function getGameID(id){
     try {
       const response = await axios.get(`${RUTA_VIDEOGAMES}/${id}`)
       const videoGameID = response.data
-      
+  
       dispatch({
         type: GET_GAME_ID,
         payload: videoGameID
@@ -48,13 +48,14 @@ export function getGameID(id){
 };
 
 export function getGameName(name) {
+  console.log(name)
   return async function (dispatch) {
     try {
-      const response = await axios.get(`${RUTA_VIDEOGAMES}/${name}`);
-      const videoGameName = response.data.slice(0, 15);
+      const response = await axios.get(`http://localhost:3001/videogames?name=${name}`)
+       
       dispatch({
         type: GET_GAME_NAME,
-        payload: videoGameName,
+        payload: response.data
       });
     } catch (e) {
       console.error('I can\'t get that game', e.message);

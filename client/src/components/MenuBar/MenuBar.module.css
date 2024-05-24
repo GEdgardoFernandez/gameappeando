@@ -21,7 +21,7 @@
   position: relative;
   font-family: "Bubble";
 background-color: none;
-text-shadow: #1df28f 1px 0 10px;
+text-shadow: #fafafa 1px 0 10px;
 }
 
 .btn::after {

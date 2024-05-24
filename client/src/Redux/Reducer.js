@@ -29,9 +29,8 @@ function rootReducer(state = inicialSate, action) {
       return {
         ...state,
         videogames: action.payload,
+        filteredGames: action.payload,
         platforms: Array.from(new Set(platforms)),
-        filteredGames: action.payload
-
       }
       break;
 
@@ -52,7 +51,7 @@ function rootReducer(state = inicialSate, action) {
     case GET_GAME_NAME:
       return {
         ...state,
-        filteredGames: action.payload
+        filteredGames: Array.isArray(action.payload) ? action.payload : []
       };
       break;
     case CREATE_GAME:
