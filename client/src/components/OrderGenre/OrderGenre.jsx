@@ -1,13 +1,21 @@
 import style from './OrderGenre.module.css'
-
+import {useDispatch} from 'react-redux';
+import {orderByName} from '..//../Redux/Actions'
 export default function OrderGenre() {
+    const dispatch = useDispatch();
+
+    const handleSort = (event) => {
+        const order = event.target.value;
+      dispatch(orderByName(order));
+    };
     return (
         <div className={style.containerOrder}>
             <span className={style.input}>Select Order: </span>
             <br />
-            <select className={style.input}>
-                <option value="A-Z">Games A-Z</option>
-                <option value="Z-A">Games Z-A</option>
+            <select className={style.input} onChange={handleSort}>
+                <option value="">Select Order</option>
+                <option value="A-Z" >Games A-Z</option>
+                <option value="Z-A" >Games Z-A</option>
                 <option value="MAJOR">Major Rating</option>
                 <option value="MINOR">Minor Rating</option>
             </select>

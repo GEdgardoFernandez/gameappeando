@@ -24,22 +24,22 @@ function rootReducer(state = inicialSate, action) {
 
   switch (action.type) {
     case GET_ALL_GAMES:
+      const uniqueGames = action.payload.filter(
+        (game, index, self) => index === self.findIndex(g => g.id === game.id)
+      );
       let platforms = [];
       action.payload.map(e => platforms = [...platforms, ...e.platforms]);
       return {
         ...state,
         videogames: action.payload,
-        filteredGames: action.payload,
+        filteredGames: uniqueGames,
         platforms: Array.from(new Set(platforms)),
-      }
-      break;
-
+      };
     case GET_GAME_ID:
       return {
         ...state,//copia estado importante no olvidar
         videogame: action.payload
-      }
-      break;
+      };
     case SEARCH_GAMES_BY_NAME:
 
       return {
@@ -47,48 +47,43 @@ function rootReducer(state = inicialSate, action) {
         filteredGames: action.payload
 
       };
-      break;
     case GET_GAME_NAME:
+      const filtered = state.filteredGames.filter(game => 
+        game.name.toLowerCase().includes(action.payload.toLowerCase())
+      );
       return {
         ...state,
-        filteredGames: Array.isArray(action.payload) ? action.payload : []
+        filteredGames: filtered,
       };
-      break;
+      
     case CREATE_GAME:
       return {
-      }
-      break;
+      };
+      
     case GET_GENRES:
       return {
         ...state,
         genres: action.payload
-      }
-      break;
+      };
+      
     case ORDER_BY_NAME:
-      const orderingName = action.payload === 'A-Z' ?
-        state.videogames.sort((a, b) => {
-          if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-
-          if (b.name.toLowerCase() > a.name.toLowerCase()) return -1
-          return 0
-        })
-        :
-        state.videogames.sort((a, b) => {
-          if (a.name.toLowerCase() > b.name.toLowerCase()) return -1
-          if (b.name.toLowerCase() > a.name.toLowerCase()) return 1
-          return 0
-        })
+      let sortedGames = [...state.filteredGames];
+      if (action.payload === 'A-Z') {
+        sortedGames.sort((a, b) => a.name.localeCompare(b.name));
+      } else if (action.payload === 'Z-A') {
+        sortedGames.sort((a, b) => b.name.localeCompare(a.name));
+      }
       return {
         ...state,
-        videogames: orderingName,
-      }
-      break;
+        filteredGames: sortedGames,
+      };
+      
 
     case ORDER_BY_GENRES:
       return {
 
       }
-      break;
+      
     case ORDER_BY_RATING:
       const orderingRating = action.payload === 'High to Low' ?
         state.videogames.sort((a, b) => Number(b.rating) - Number(a.rating))
@@ -98,8 +93,6 @@ function rootReducer(state = inicialSate, action) {
         ...state,
         videogames: orderingRating
       }
-
-      break;
     case ORDER_BY_SOURCE:
       const getVideoGames = state.allVideoGames
       const filterVG = action.payload === 'DB' ? getVideoGames.filter(g => g.createdInDB)
@@ -108,7 +101,6 @@ function rootReducer(state = inicialSate, action) {
         ...state,
         videogames: action.payload === 'All games' ? getVideoGames : filterVG
       }
-      break;
     default: return state
   }
 }

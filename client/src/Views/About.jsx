@@ -1,13 +1,11 @@
-import MenuBar from "../components/MenuBar/MenuBar";
+import Aboutcomp from "../components/About/About";
 import Footer from "../components/Footer/Footer";
 
 export default function About() {
 
     return (    
         <div className="containerHome">
-            <MenuBar />
-
-
+            <Aboutcomp />
             <div>
                 <Footer />
             </div>

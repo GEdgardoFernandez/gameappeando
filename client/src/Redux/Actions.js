@@ -51,7 +51,7 @@ export function getGameName(name) {
   console.log(name)
   return async function (dispatch) {
     try {
-      const response = await axios.get(`http://localhost:3001/videogames?name=${name}`)
+      const response = await axios.get(`http://localhost:3001/videogames/name=${name}`)
        
       dispatch({
         type: GET_GAME_NAME,
@@ -78,10 +78,11 @@ export function createGame(payload){
 };
 
 
-export function orderByName(payload) {
-   return function(dispatch) {
-    return dispatch({type: ORDER_BY_NAME, payload})
-   }
+export function orderByName(order) {
+  return {
+    type: ORDER_BY_NAME,
+    payload: order,
+  };
 };
 
 export function orderByGenres(payload) {

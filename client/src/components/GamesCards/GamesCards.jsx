@@ -6,24 +6,21 @@ import Pagination from '../Pagination/Pagination';
 import { getAllGames } from '../../Redux/Actions';
 import Loading from '../Loading/Loading';
 import SearchBar from '../SearchBar/SearchBar';
+import OrderGenre from '../OrderGenre/OrderGenre.jsx';
 
 export default function GamesCards() {
   const dispatch = useDispatch();
   const Allgames = useSelector(state => state.filteredGames);
   console.log(Allgames)
+  useEffect(() => {
+    dispatch(getAllGames());
+  }, [dispatch]);
   const [currentPage, setCurrentPage] = useState(1);
   const gamesPerPage = 15;
   const indexOfLastGame = currentPage * gamesPerPage;
   const indexOfFirstGame = indexOfLastGame - gamesPerPage;
-  const games = [];
-  if (Array.isArray(Allgames)){
-    games = Allgames.slice(indexOfFirstGame, indexOfLastGame);
-    return games
-  };
+  const games = Allgames.slice(indexOfFirstGame, indexOfLastGame);
   console.log(games)
-  useEffect(() => {
-    dispatch(getAllGames());
-  }, [dispatch]);
   // Cambia de página
   const paginate = pageNumber => setCurrentPage(pageNumber);
   if (games.length === 0) {
@@ -37,6 +34,7 @@ export default function GamesCards() {
     <div className={style.containerCards}>
       <div>
         <SearchBar />
+        <OrderGenre />
       </div>
       {/* Verificar si la lista de juegos está definida antes de mapearla */}
       {games?.map(g => (

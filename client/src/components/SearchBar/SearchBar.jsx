@@ -2,7 +2,7 @@ import style from './SearchBar.module.css';
 import { getGameName } from '..//..//Redux/Actions'
 import { useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react';
-import OrderGenre from '../OrderGenre/OrderGenre.jsx';
+
 
 export default function SearchBar() {
     const dispatch = useDispatch();
@@ -22,7 +22,6 @@ export default function SearchBar() {
     
     return (
         <div className={style.container}>
-  
       <input
         type="text"
         placeholder="Search games..."
@@ -31,7 +30,6 @@ export default function SearchBar() {
         className={style.input}
       />
       <button onClick={handleSearch} className={style.buttonS}>Search</button>
-      <OrderGenre/>
       </div>
     );
     
