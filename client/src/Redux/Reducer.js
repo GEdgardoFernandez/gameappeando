@@ -8,7 +8,8 @@ import {
   ORDER_BY_GENRES,
   ORDER_BY_RATING,
   ORDER_BY_SOURCE,
-  SEARCH_GAMES_BY_NAME
+  SEARCH_GAMES_BY_NAME,
+  GET_PLATFORMS,
 } from './Actions';
 
 const inicialSate = {
@@ -65,13 +66,21 @@ function rootReducer(state = inicialSate, action) {
         ...state,
         genres: action.payload
       };
-      
+    case GET_PLATFORMS:
+      return {
+        ...state,
+        platforms: action.payload
+      }
     case ORDER_BY_NAME:
       let sortedGames = [...state.filteredGames];
       if (action.payload === 'A-Z') {
         sortedGames.sort((a, b) => a.name.localeCompare(b.name));
       } else if (action.payload === 'Z-A') {
         sortedGames.sort((a, b) => b.name.localeCompare(a.name));
+      } else if (action.payload === 'Highest-Rating') {
+        sortedGames.sort((a, b) => b.rating - a.rating);
+      } else if (action.payload === 'Lowest-Rating') {
+        sortedGames.sort((a, b) => a.rating - b.rating);
       }
       return {
         ...state,
@@ -84,15 +93,6 @@ function rootReducer(state = inicialSate, action) {
 
       }
       
-    case ORDER_BY_RATING:
-      const orderingRating = action.payload === 'High to Low' ?
-        state.videogames.sort((a, b) => Number(b.rating) - Number(a.rating))
-        :
-        state.videogames.sort((a, b) => Number(a.rating) - Number(b.rating))
-      return {
-        ...state,
-        videogames: orderingRating
-      }
     case ORDER_BY_SOURCE:
       const getVideoGames = state.allVideoGames
       const filterVG = action.payload === 'DB' ? getVideoGames.filter(g => g.createdInDB)

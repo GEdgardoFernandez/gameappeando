@@ -32,7 +32,7 @@ export default function GamesCards() {
   return (
 
     <div className={style.containerCards}>
-      <div>
+      <div className={style.containerSearch}>
         <SearchBar />
         <OrderGenre />
       </div>
@@ -43,6 +43,7 @@ export default function GamesCards() {
           id={g.id}
           name={g.name}
           image={g.image}
+          rating={g.rating}
           genre={g.genres.join(', ')}
         />
       ))}
