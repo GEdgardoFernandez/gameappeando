@@ -6,14 +6,16 @@ const getAllGenres = require('../controllers/genreController');
 const getAllVideogames = require('../controllers/getAllVideoGames');
 const getVideogamesByName = require('../controllers/getGameByName');
 const postVideoGame = require('../controllers/postVideoGame');
+const getAllPlatforms = require('..//controllers/getPlatforms')
 const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 router.get('/videogames', getAllVideogames);
 router.get('/videogames/:id', getGameById);
-router.get('/videogames/name', getVideogamesByName);
+router.get('/videogames/name?=:name', getVideogamesByName);
 router.get('/genres', getAllGenres);
-router.post('/videogame', postVideoGame);
+router.get('/platforms', getAllPlatforms);
+router.post('/videogames', postVideoGame);
 
 module.exports = router;

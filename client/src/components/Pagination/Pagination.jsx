@@ -1,17 +1,33 @@
 import style from './Pagination.module.css'
 
-export default function Pagination({ gamesPerPage, allVideoGames, onPageChange }) {
-  let pageNumber = [];
-  let page = Math.ceil(allVideoGames / gamesPerPage);
-  for (let i = 0; i < page; i++) {
-    pageNumber = [];
+export default function Pagination({ gamesPerPage, totalGames, paginate, currentPage }) {
+  const pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(totalGames / gamesPerPage); i++) {
+    pageNumbers.push(i);
   }
-  let currentPage = 1;
+
   return (
-    <div className={style.container}>
-      <button onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}>Prev</button>
-      <label htmlFor="" className={style.label}>{currentPage} of {pageNumber.length}</label>
-      <button onClick={() => onPageChange(currentPage + 1)} disabled={currentPage === pageNumber.length}>Next</button>
-    </div>
+    <nav>
+      <ul className={style.pagination}>
+        <li>
+          <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1} className={style.btn}>
+            Previous
+          </button>
+        </li>
+        {pageNumbers.map(number => (
+          <li key={number} className={currentPage === number ? style.active : ''}>
+            <button onClick={() => paginate(number)} className={style.btn}>
+              {number}
+            </button>
+          </li>
+        ))}
+        <li>
+          <button onClick={() => paginate(currentPage + 1)} disabled={currentPage === pageNumbers.length} className={style.btn}>
+            Next
+          </button>
+        </li>
+      </ul>
+    </nav>
   );
 }

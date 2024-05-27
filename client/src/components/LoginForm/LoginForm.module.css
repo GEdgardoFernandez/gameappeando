@@ -12,7 +12,11 @@
 }
 
 .but:active {
+  background: hsl(0deg 0% 60%);
   box-shadow: inset -1px -1px #fff, inset 1px 1px #292929, inset -2px -2px #ffffff, inset 2px 2px rgb(158, 158, 158);
+}
+.but:hover{
+  cursor:pointer;
 }
   .container {
     display: flex;

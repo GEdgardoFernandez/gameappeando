@@ -7,7 +7,7 @@
     background-color: #f21de4;
 }
 
-.input {
+.btn {
     font-size: 15px;
     border: none;
     border-radius: 5px;
@@ -17,4 +17,17 @@
     font-family: "Bubble";
     background-color: none;
     text-shadow: #f21de4 1px 0 10px;
+}
+.btn:hover {
+    background-color: rgba(154, 16, 246, 0.5);
+    color: rgb(248, 244, 244);
+    cursor: pointer;
+}
+.pagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: row;
 }

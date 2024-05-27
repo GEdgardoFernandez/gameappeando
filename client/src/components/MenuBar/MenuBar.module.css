@@ -21,7 +21,7 @@
   position: relative;
   font-family: "Bubble";
 background-color: none;
-text-shadow: #f21dd2 1px 0 10px;
+text-shadow: #fafafa 1px 0 10px;
 }
 
 .btn::after {
@@ -52,12 +52,13 @@ text-shadow: #f21dd2 1px 0 10px;
 
 .btn:hover {
   text-shadow: -1px -1px 0px #2ff21d, 1px 1px 0px #E94BE8;
+  cursor: pointer;
 }
 
 .btn:hover {
   background-color: transparent;
-  border: 1px solid rgb(229, 255, 0);
-  box-shadow: 0px 10px 10px -10px rgb(44, 208, 35);
+  border: 1px solid rgba(21, 255, 0, 0.3);
+  box-shadow: 0px 10px 10px -3px rgb(31, 31, 31);
 }
 
 @keyframes glitch_4011 {

@@ -9,7 +9,7 @@
 }
 
 .input {
-    font-size: 18px;
+    font-size: 15px;
     border: none;
     border-radius: 5px;
     color: rgb(0, 0, 0);
@@ -18,4 +18,22 @@
     font-family: "Bubble";
     background-color: none;
     text-shadow: #f21de4 1px 0 10px;
+}
+
+.buttonS{
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    background-color: rgba(246, 16, 16, 0.5);
+    position: relative;
+    font-family: "Bubble";
+    background-color: none;
+    text-shadow: #f21de4 1px 0 10px;
+}
+.buttonS:hover {
+    text-shadow: #8d0909de 1px 0 10px; 
+    background-color: rgba(246, 16, 227, 0.705);
+    color: white;
+    cursor: pointer;
 }
