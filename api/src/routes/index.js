@@ -13,7 +13,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 router.get('/videogames', getAllVideogames);
 router.get('/videogames/:id', getGameById);
-router.get('/videogames/name?=:name', getVideogamesByName);
+router.get('/videogames', getVideogamesByName);
 router.get('/genres', getAllGenres);
 router.get('/platforms', getAllPlatforms);
 router.post('/videogames', postVideoGame);

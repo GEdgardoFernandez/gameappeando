@@ -1,4 +1,4 @@
-const {Videogame, Genres } = require('../db.js');
+const {Videogame, Genre } = require('../db.js');
 
 const createVideogame = async (req, res, next) => {
   let { name, image, description, released, rating, platforms, genres } = req.body;
@@ -24,7 +24,7 @@ const createVideogame = async (req, res, next) => {
       platforms: platforms ? platforms.toString() : 'Not yet available for platforms',
   });
   
-    let genre =  await Genres.findAll({
+    let genre =  await Genre.findAll({
     where: { name: genres }
     });
   

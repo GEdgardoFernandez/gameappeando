@@ -24,7 +24,7 @@
     flex-wrap: wrap;
     font-size: 15px;
     border-radius: 5px;
-    color: rgb(32, 197, 238);
+    color: rgb(238, 32, 32);
     background-color: rgba(12, 7, 7, 0.5);
     font-family: "Bubble";
     background-color: none;
@@ -36,7 +36,7 @@
     flex-direction: row;
     font-size: 10px;
     border-radius: 5px;
-    color: rgb(32, 197, 238);
+    color: rgb(32, 238, 32);
     background-color: rgba(12, 7, 7, 0.5);
     font-family: "Bubble";
     background-color: none;

@@ -1,16 +1,20 @@
 import style from './FormsAddGames.module.css';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllGenres } from '../../Redux/Actions';
+import { getAllGenres, getAllPlatforms } from '../../Redux/Actions';
 
 export default function FormsAddGames() {
     const dispatch = useDispatch();
     const allGenres = useSelector(state => state.genres);
+    const allPlatforms = useSelector(state => state.platforms);
     
     useEffect(() => {
         dispatch(getAllGenres());
       }, [dispatch]);
       console.log(allGenres)
+      useEffect(() => {
+          dispatch(getAllPlatforms());
+      }, [dispatch]);
     const [formData, setformData] = useState({
         name: '',
         image: '',
@@ -41,18 +45,14 @@ export default function FormsAddGames() {
                     <label htmlFor="description" className={style.input}>Description: </label>
                     <input className={style.inputText} type="textarea" name="description" id="description" placeholder="Description" size={50} required />
                 </div>
-                <div className={style.input}>
+                <div className={style.inputGenres}>
                     <label htmlFor="platform" className={style.input}>Platforms: </label>
-                    <span className={style.input}>PS4</span>
-                    <input type="checkbox" name="PS4" id="PS4" value="PS4" />
-                    <span className={style.input}>Xbox</span>
-                    <input type="checkbox" name="Xbox" id="Xbox" value="Xbox" />
-                    <span className={style.input}>PC</span>
-                    <input type="checkbox" name="PC" id="PC" value="PC" />
-                    <span className={style.input}>PS5</span>
-                    <input type="checkbox" name="PS5" id="PS5" value="PS5" />
-                    <span className={style.input}>Xbox One</span>
-                    <input type="checkbox" name="Xbox One" id="Xbox One" value="Xbox One" />
+                    {allPlatforms.map((platform) => (
+                        <div key={platform.id} className={style.genres}>
+                            <span >{platform.name}</span>
+                            <input type="checkbox" name="platforms" value={platform.name} onChange={handleChange} />
+                        </div>
+                    ))}
                 </div>
                 <div className={style.input}>
                     <label htmlFor="released" className={style.input}>Released: </label>

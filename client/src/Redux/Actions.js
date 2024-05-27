@@ -53,16 +53,15 @@ export function getGameName(name) {
   console.log(name)
   return async function (dispatch) {
     try {
-      const response = await axios.get(`http://localhost:3001/videogames/name=${name}`)
-
+      const response = await axios.get(`${RUTA_VIDEOGAMES}?name=${name}`);
       dispatch({
         type: GET_GAME_NAME,
-        payload: response.data
+        payload: response.data,
       });
-    } catch (e) {
-      console.error('I can\'t get that game', e.message);
+    } catch (error) {
+      console.error('Error fetching games by name:', error);
     }
-  };
+  }
 }
 
 export function getAllGenres() {

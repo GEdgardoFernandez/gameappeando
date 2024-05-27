@@ -49,12 +49,10 @@ function rootReducer(state = inicialSate, action) {
 
       };
     case GET_GAME_NAME:
-      const filtered = state.filteredGames.filter(game => 
-        game.name.toLowerCase().includes(action.payload.toLowerCase())
-      );
       return {
         ...state,
-        filteredGames: filtered,
+        filteredGames: action.payload
+
       };
       
     case CREATE_GAME:
