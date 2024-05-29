@@ -1,8 +1,8 @@
 const axios = require('axios');
 const getDBData = require('./getApiDataGame');
 const getApiData = require('./getApiDataGame');
-const { Videogame, Genres } = require ('../db')
-const { getGamesByName, getGamesByNameDB} = require ('./getGameByName');
+const { Videogame, Genres } = require('../db');
+const { getGamesByName, getGamesByNameDB } = require('./getGameByName');
 
 const getAllVideogames = async (req, res, next) => {
   const { name } = req.query;
@@ -24,7 +24,7 @@ const getAllVideogames = async (req, res, next) => {
       let apiDataByName = await getGamesByName(name);
       let DBDataByName = await getGamesByNameDB(name);
 
-      if (!apiDataByName && !DBDataByName) {
+      if (!apiDataByName.length && !DBDataByName.length) {
         console.log('No se encontraron datos para el nombre proporcionado');
         return res.status(404).json({ msg: "No se encontraron datos para el nombre proporcionado" });
       }

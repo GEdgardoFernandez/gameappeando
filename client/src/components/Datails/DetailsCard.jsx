@@ -4,6 +4,11 @@ import { useEffect, useLayoutEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getGameID } from '../../Redux/Actions';
 import Loading from '../Loading/Loading';
+const removeHtmlTags = (html) => {
+    const temporalDivElement = document.createElement('div');
+    temporalDivElement.innerHTML = html;
+    return temporalDivElement.textContent || temporalDivElement.innerText || '';
+  };
 const DetailsCard = (params) => {
     const path = window.location.pathname;
     const idPath = path.split('/').pop();
@@ -42,7 +47,7 @@ const DetailsCard = (params) => {
             <div>
                 <h3 className={style.title}>Description</h3>
                 <div>
-                    <p className={style.description}>{gameDatails.description}</p>
+                    <p className={style.description}>{removeHtmlTags(gameDatails.description)}</p>
                 </div>
             </div>
 
