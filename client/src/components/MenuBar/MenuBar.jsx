@@ -1,5 +1,4 @@
 import style from './MenuBar.module.css';
-import SearchBar from '../SearchBar/SearchBar';
 import { useNavigate } from 'react-router-dom';
 
 export default function MenuBar({onSearch}) {

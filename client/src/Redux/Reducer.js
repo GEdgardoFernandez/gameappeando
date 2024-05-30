@@ -55,10 +55,11 @@ function rootReducer(state = inicialSate, action) {
 
       };
       
-    case CREATE_GAME:
-      return {
-      };
-      
+      case CREATE_GAME:
+        return {
+          ...state,
+          videogame: [...state.videogame, action.payload],
+        };
     case GET_GENRES:
       return {
         ...state,

@@ -2,6 +2,7 @@ import style from './FormsAddGames.module.css';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllGenres, getAllPlatforms } from '../../Redux/Actions';
+import SuccesAddGame from '../SuccesAddGame/SuccesAddGame';
 
 export default function FormsAddGames() {
     const dispatch = useDispatch();
@@ -24,6 +25,7 @@ export default function FormsAddGames() {
         rating: '',
         genre: [],
     })
+    
     const handleChange = (event) => {
         setformData({
             ...formData,
