@@ -11,7 +11,7 @@ const Home = () => {
             <div>
                 <GamesCards />
             </div>
-            <div>
+            <div className="footer">
                 <Footer />
             </div>
         </div>

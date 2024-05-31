@@ -6,11 +6,9 @@ export const GET_GAME_NAME = 'GET_GAME_NAME'
 export const CREATE_GAME = 'CREATE_GAME'
 export const GET_GENRES = 'GET_GENRES'
 export const ORDER_BY_NAME = 'ORDER_BY_NAME'
-export const ORDER_BY_GENRES = 'ORDER_BY_NAME'
-export const ORDER_BY_RATING = 'ORDER_BY_NAME'
-export const ORDER_BY_SOURCE = 'ORDER_BY_NAME'
+export const FILTER_BY_SOURCE = 'FILTER_BY_SOURCE'
 export const SEARCH_GAMES_BY_NAME = 'SEARCH_GAMES_BY_NAME'
-export const GET_PLATFORMS ='GET_PLATFORMS'
+export const GET_PLATFORMS = 'GET_PLATFORMS'
 
 const RUTA_VIDEOGAMES = 'http://localhost:3001/videogames'
 const RUTA_GENRES = 'http://localhost:3001/genres'
@@ -28,6 +26,10 @@ export function getAllGames() {
       })
     } catch (e) {
       alert('I cant get all the games', e.message)
+      dispatch({
+        type: GET_ALL_GAMES,
+        payload: [],
+      });
     }
   }
 };
@@ -76,8 +78,8 @@ export function getAllGenres() {
     }
   }
 }
-export function getAllPlatforms(){
-  return async function(dispatch){
+export function getAllPlatforms() {
+  return async function (dispatch) {
     try {
       const response = await axios.get(`${RUTA_PLATFORMS}`);
       dispatch({
@@ -85,7 +87,7 @@ export function getAllPlatforms(){
         payload: response.data
       })
     } catch (error) {
-      
+
     }
   }
 }
@@ -112,20 +114,9 @@ export function orderByName(order) {
   };
 };
 
-export function orderByGenres(payload) {
-  return function (dispatch) {
-    return dispatch({ type: ORDER_BY_GENRES, payload })
-  }
-};
-
-export function orderByRating(payload) {
-  return function (dispatch) {
-    return dispatch({ type: ORDER_BY_RATING, payload })
-  }
-};
-
-export function orderBySource(payload) {
-  return function (dispatch) {
-    return dispatch({ type: ORDER_BY_SOURCE, payload })
-  }
-};
+export function filterBySource(source) {
+  return {
+    type: FILTER_BY_SOURCE,
+    payload: source
+  };
+}

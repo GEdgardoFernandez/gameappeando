@@ -1,12 +1,11 @@
 
 import style from './CardGame.module.css';
-import { NavLink } from 'react-router-dom';
 export default function CardGame(params) {
-   
-    return (        
+
+    return (
         <div className={style.containerCard}>
             <div className={style.imgcontainer}>
-                <img className={style.img} src={params.image} alt={params.name} onClick={() => window.location.href = `/details/${params.id}`}/>
+                <img className={style.img} src={params.image} alt={params.name} onClick={() => window.location.href = `/details/${params.id}`} />
                 <span className={style.rating}>⭐{params.rating}</span>
             </div>
             <div className={style.textcontainer}>
@@ -14,6 +13,6 @@ export default function CardGame(params) {
                 <h3 className={style.title}>{params.genre}</h3>
             </div>
         </div>
-        
+
     )
 }

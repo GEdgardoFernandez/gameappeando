@@ -1,12 +1,19 @@
 import style from './OrderGenre.module.css'
 import { useDispatch } from 'react-redux';
-import { orderByName } from '..//../Redux/Actions'
+import { orderByName, filterBySource } from '..//../Redux/Actions'
+
 export default function OrderGenre() {
     const dispatch = useDispatch();
-
     const handleSort = (event) => {
         const order = event.target.value;
         dispatch(orderByName(order));
+    }; const handleFilterSource = (event) => {
+        const { name, checked } = event.target;
+        if (checked) {
+            dispatch(filterBySource(name));
+        } else {
+            dispatch(filterBySource('both'));
+        }
     };
     return (
         <div className={style.containerOrder}>
@@ -20,29 +27,16 @@ export default function OrderGenre() {
                 <option value="Lowest-Rating">Lowest Rating</option>
             </select>
             <div className={style.input}>
-                <span>Order Genre</span>
-                <label class={style.material}>
-                    <input type="checkbox" />
-                    <span class={style.checkmark}></span>
-                    Genre A-Z
-                </label>
-                <label class={style.material}>
-                    <input type="checkbox" />
-                    <span class={style.checkmark}></span>
-                    Genre Z-A
-                </label>
-            </div>
-            <div className={style.input}>
                 <span>Order Api or Data Base</span>
-                <label class={style.material}>
-                    <input type="checkbox" />
-                    <span class={style.checkmark}></span>
+                <label className={style.material}>
+                    <input type="checkbox" name="api" onChange={handleFilterSource} />
+                    <span className={style.checkmark}></span>
                     Games in API
                 </label>
-                <label class={style.material}>
-                    <input type="checkbox" />
-                    <span class={style.checkmark}></span>
-                    Games in DATA BASE
+                <label className={style.material}>
+                    <input type="checkbox" name="db" onChange={handleFilterSource} />
+                    <span className={style.checkmark}></span>
+                    Games in DATABASE
                 </label>
             </div>
         </div>

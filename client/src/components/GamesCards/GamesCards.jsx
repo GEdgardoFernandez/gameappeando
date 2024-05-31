@@ -23,6 +23,7 @@ export default function GamesCards() {
   console.log(games)
   // Cambia de página
   const paginate = pageNumber => setCurrentPage(pageNumber);
+
   if (games.length === 0) {
 
     return <div>

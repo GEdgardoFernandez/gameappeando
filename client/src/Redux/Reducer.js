@@ -5,20 +5,19 @@ import {
   CREATE_GAME,
   GET_GENRES,
   ORDER_BY_NAME,
-  ORDER_BY_GENRES,
-  ORDER_BY_RATING,
-  ORDER_BY_SOURCE,
+  FILTER_BY_SOURCE,
   SEARCH_GAMES_BY_NAME,
   GET_PLATFORMS,
 } from './Actions';
 
 const inicialSate = {
+  allGames: [],
   filteredGames: [],
   videogames: [],
   videogame: [],
   genres: [],
   platforms: [],
-
+  sourceFilter: 'both',
 }
 
 function rootReducer(state = inicialSate, action) {
@@ -54,12 +53,12 @@ function rootReducer(state = inicialSate, action) {
         filteredGames: action.payload
 
       };
-      
-      case CREATE_GAME:
-        return {
-          ...state,
-          videogame: [...state.videogame, action.payload],
-        };
+
+    case CREATE_GAME:
+      return {
+        ...state,
+        videogame: [...state.videogame, action.payload],
+      };
     case GET_GENRES:
       return {
         ...state,
@@ -85,21 +84,20 @@ function rootReducer(state = inicialSate, action) {
         ...state,
         filteredGames: sortedGames,
       };
-      
 
-    case ORDER_BY_GENRES:
-      return {
-
+    case FILTER_BY_SOURCE:
+      let sourceFilteredGames = [];
+      if (action.payload === 'api') {
+        sourceFilteredGames = state.allGames.filter(game => typeof game.id === 'number');
+      } else if (action.payload === 'db') {
+        sourceFilteredGames = state.allGames.filter(game => typeof game.id === 'string');
+      } else {
+        sourceFilteredGames = state.allGames;
       }
-      
-    case ORDER_BY_SOURCE:
-      const getVideoGames = state.allVideoGames
-      const filterVG = action.payload === 'DB' ? getVideoGames.filter(g => g.createdInDB)
-        : getVideoGames.filter(e => !e.createdInDB)
       return {
         ...state,
-        videogames: action.payload === 'All games' ? getVideoGames : filterVG
-      }
+        filteredGames: sourceFilteredGames,
+      };
     default: return state
   }
 }
