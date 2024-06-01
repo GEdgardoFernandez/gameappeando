@@ -7,7 +7,7 @@ export default function Plataforms() {
         <div className="containerHome">
             <MenuBar />
             <FormsAddGames />
-            <div>
+            <div className="footer">
                 <Footer />
             </div>
         </div>

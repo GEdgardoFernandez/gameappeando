@@ -10,7 +10,7 @@ import {
   GET_PLATFORMS,
 } from './Actions';
 
-const inicialSate = {
+const initialState = {
   allGames: [],
   filteredGames: [],
   videogames: [],
@@ -20,7 +20,7 @@ const inicialSate = {
   sourceFilter: 'both',
 }
 
-function rootReducer(state = inicialSate, action) {
+function rootReducer(state = initialState, action) {
 
   switch (action.type) {
     case GET_ALL_GAMES:
@@ -31,13 +31,14 @@ function rootReducer(state = inicialSate, action) {
       action.payload.map(e => platforms = [...platforms, ...e.platforms]);
       return {
         ...state,
-        videogames: action.payload,
+        allGames: uniqueGames,
         filteredGames: uniqueGames,
         platforms: Array.from(new Set(platforms)),
       };
+
     case GET_GAME_ID:
       return {
-        ...state,//copia estado importante no olvidar
+        ...state,
         videogame: action.payload
       };
     case SEARCH_GAMES_BY_NAME:
@@ -90,7 +91,7 @@ function rootReducer(state = inicialSate, action) {
       if (action.payload === 'api') {
         sourceFilteredGames = state.allGames.filter(game => typeof game.id === 'number');
       } else if (action.payload === 'db') {
-        sourceFilteredGames = state.allGames.filter(game => typeof game.id === 'string');
+        sourceFilteredGames = state.allGames.filter(game => typeof game.id == "ab182556-c4b5-4adc-aa41-913da1ed23a9");
       } else {
         sourceFilteredGames = state.allGames;
       }

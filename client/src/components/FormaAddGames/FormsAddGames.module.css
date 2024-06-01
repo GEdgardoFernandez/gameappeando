@@ -5,7 +5,23 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
-
+.form {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-size: 10px;
+    border-radius: 5px;
+    color: rgb(32, 197, 238);
+    background-color: rgba(12, 7, 7, 0.5);
+    font-family: "Bubble";
+    background-color: none;
+    text-shadow: #72f21d 1px 0 10px;
+    width: 100vh;
+}
 .input {
     font-size: 15px;
     border-radius: 5px;
@@ -71,4 +87,26 @@
     cursor: pointer;
     transform: scale(1.1);
     transition: 0.6s;
+}
+
+.error {
+    color: red;
+}
+
+.buttonS{
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    background-color: rgba(246, 16, 16, 0.5);
+    position: relative;
+    font-family: "Bubble";
+    background-color: none;
+    text-shadow: #f21de4 1px 0 10px;
+}
+.buttonS:hover {
+    text-shadow: #8d0909de 1px 0 10px; 
+    background-color: rgba(246, 16, 227, 0.705);
+    color: white;
+    cursor: pointer;
 }

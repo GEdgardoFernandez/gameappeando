@@ -94,17 +94,17 @@ export function getAllPlatforms() {
 export function createGame(payload) {
   return async function (dispatch) {
     try {
-      const response = axios.post(`${RUTA_VIDEOGAMES}}`, payload)
-      const videoGame = response.data
+      const response = await axios.post(`${RUTA_VIDEOGAMES}`, payload); // Corrige la ruta aquí
+      const videoGame = response.data;
       dispatch({
         type: CREATE_GAME,
         payload: videoGame
-      })
+      });
     } catch (e) {
-      alert('I cant create that game', e.message)
+      alert('I can\'t create that game', e.message);
     }
   }
-};
+}
 
 
 export function orderByName(order) {
@@ -115,6 +115,7 @@ export function orderByName(order) {
 };
 
 export function filterBySource(source) {
+  console.log(source)
   return {
     type: FILTER_BY_SOURCE,
     payload: source

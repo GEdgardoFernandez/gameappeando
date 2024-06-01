@@ -1,5 +1,5 @@
 const axios = require('axios');
-const getDBData = require('./getApiDataGame');
+const getDataBaseGames = require('./getDataBaseGames');
 const getApiData = require('./getApiDataGame');
 const { Videogame, Genres } = require('../db');
 const { getGamesByName, getGamesByNameDB } = require('./getGameByName');
@@ -10,7 +10,7 @@ const getAllVideogames = async (req, res, next) => {
   try {
     if (!name) {
       let apiData = await getApiData();
-      let DBData = await getDBData();
+      let DBData = await getDataBaseGames();
 
       if (!apiData && !DBData) {
         console.log('No se encontraron datos');

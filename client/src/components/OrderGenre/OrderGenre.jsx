@@ -7,9 +7,10 @@ export default function OrderGenre() {
     const handleSort = (event) => {
         const order = event.target.value;
         dispatch(orderByName(order));
-    }; const handleFilterSource = (event) => {
-        const { name, checked } = event.target;
-        if (checked) {
+    }; 
+    const handleFilterSource = (event) => {
+        const name = event.target.value;
+        if (name === 'api' || name === 'db') {
             dispatch(filterBySource(name));
         } else {
             dispatch(filterBySource('both'));
@@ -29,12 +30,12 @@ export default function OrderGenre() {
             <div className={style.input}>
                 <span>Order Api or Data Base</span>
                 <label className={style.material}>
-                    <input type="checkbox" name="api" onChange={handleFilterSource} />
+                    <input type="checkbox" value={'api'} onChange={handleFilterSource} />
                     <span className={style.checkmark}></span>
                     Games in API
                 </label>
                 <label className={style.material}>
-                    <input type="checkbox" name="db" onChange={handleFilterSource} />
+                    <input type="checkbox" value={'db'} onChange={handleFilterSource} />
                     <span className={style.checkmark}></span>
                     Games in DATABASE
                 </label>
