@@ -56,6 +56,7 @@ function rootReducer(state = initialState, action) {
       };
 
     case CREATE_GAME:
+      console.log(action.payload)
       return {
         ...state,
         videogame: [...state.videogame, action.payload],
@@ -91,7 +92,7 @@ function rootReducer(state = initialState, action) {
       if (action.payload === 'api') {
         sourceFilteredGames = state.allGames.filter(game => typeof game.id === 'number');
       } else if (action.payload === 'db') {
-        sourceFilteredGames = state.allGames.filter(game => typeof game.id == "ab182556-c4b5-4adc-aa41-913da1ed23a9");
+        sourceFilteredGames = state.allGames.filter(game => typeof game.id !== "number");
       } else {
         sourceFilteredGames = state.allGames;
       }

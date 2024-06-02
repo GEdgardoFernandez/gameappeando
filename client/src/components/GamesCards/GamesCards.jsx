@@ -45,7 +45,7 @@ export default function GamesCards() {
           name={g.name}
           image={g.image}
           rating={g.rating}
-          genre={g.genres.join(', ')}
+          genre={g.genres?.join(', ') || 'No genre'}
         />
       ))}
       <Pagination

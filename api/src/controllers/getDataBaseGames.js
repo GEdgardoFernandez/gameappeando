@@ -21,7 +21,7 @@ const getDataBaseGames = async (req, res) => {
       released: vgames.released,
       rating: vgames.rating,
       platforms: vgames.platforms,
-      genre: vgames.genre.map(g => g.name),
+      genres: vgames.genre,
       create: vgames.create,
     }));
 

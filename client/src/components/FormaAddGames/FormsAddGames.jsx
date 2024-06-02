@@ -1,6 +1,5 @@
 import style from './FormsAddGames.module.css';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllGenres, getAllPlatforms, createGame } from '../../Redux/Actions';
 import SuccesAddGame from '../SuccesAddGame/SuccesAddGame';
@@ -79,7 +78,7 @@ export default function FormsAddGames() {
         const errors = {};
         if(game.name.length < 2) {errors.name = "Name must have at least 2 characters"};
         if(game.description.length < 15) {errors.description = "Description must have at least 15 characters"};
-        if(game.rating < 0 || game.rating > 5) {errors.rating = "Rating must be greater than 0"}
+        if(game.rating < 0 || game.rating >= 5) {errors.rating = "Rating must be greater than 0"}
         if(isNaN(game.rating)) {errors.rating = "Rating must be a number"}
         if(game.genres.length < 2) {errors.genres = "The game must have at least one gender"}
         if(game.platforms.length < 2) {errors.platforms = "the game must have at least one platform"}
@@ -87,6 +86,7 @@ export default function FormsAddGames() {
     };
 
     //Logica para postear el game
+    console.log(game)
     const handleCreate = async(e)  => {
         e.preventDefault()
         setError(validate(game))
@@ -146,7 +146,7 @@ export default function FormsAddGames() {
                     <label><span className={style.input}>Image: </span></label>
                     <input 
                     className={style.inputText}
-                        type="url" 
+                        type="text" 
                         name="img"
                         onChange={handleInput}
                         autoComplete="off"
@@ -160,7 +160,7 @@ export default function FormsAddGames() {
                         {
                             game.platforms?.map((plat, index) => {
                                 return(
-                                    <span key={index} className={style.inputText} >{plat}<button value={plat} onClick={handleDeletePlatform} className={style.inputText}>X</button></span>
+                                    <span key={index} className={style.inputText} >{plat}<button value={plat} onClick={handleDeletePlatform} className={style.buttonX}>X</button></span>
                                 )
                             })
                         }
@@ -174,12 +174,12 @@ export default function FormsAddGames() {
                         {
                             game.genres?.map((genre, index) => {
                                 return(
-                                    <span key={index} className={style.inputText}>{genre}<button value={genre} onClick={handleDeleteGenre} className={style.inputText}>X</button></span>
+                                    <span key={index} className={style.inputText}>{genre}<button value={genre} onClick={handleDeleteGenre} className={style.buttonX}>X</button></span>
                                 )
                             })
                         }
                     </div>
-                    <button className={style.buttonS} type="submit">CREATE</button>
+                    <button className={style.buttonS} type="submit" onClick={handleCreate}>CREATE</button>
                 </form>
             </div>
         </div>

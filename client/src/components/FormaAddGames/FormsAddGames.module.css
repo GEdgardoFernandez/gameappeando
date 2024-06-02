@@ -66,6 +66,7 @@
     font-family: "Bubble";
     background-color: rgba(255, 255, 255, 0.5);
     text-shadow: #f2d21d 1px 0 10px;
+    margin: 2px;
 }
 
 .buttonS{
@@ -93,18 +94,17 @@
     color: red;
 }
 
-.buttonS{
-    font-size: 15px;
+.buttonX{
+    font-size: 10px;
     border: none;
     border-radius: 5px;
     color: rgb(0, 0, 0);
-    background-color: rgba(246, 16, 16, 0.5);
-    position: relative;
     font-family: "Bubble";
-    background-color: none;
-    text-shadow: #f21de4 1px 0 10px;
+    background-color: rgba(17, 235, 195, 0.5);
+    text-shadow: #f2d21d 1px 0 10px;
+    margin: 2px;
 }
-.buttonS:hover {
+.buttonX:hover {
     text-shadow: #8d0909de 1px 0 10px; 
     background-color: rgba(246, 16, 227, 0.705);
     color: white;

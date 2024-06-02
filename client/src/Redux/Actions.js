@@ -96,6 +96,7 @@ export function createGame(payload) {
     try {
       const response = await axios.post(`${RUTA_VIDEOGAMES}`, payload); // Corrige la ruta aquí
       const videoGame = response.data;
+      console.log(videoGame)
       dispatch({
         type: CREATE_GAME,
         payload: videoGame
