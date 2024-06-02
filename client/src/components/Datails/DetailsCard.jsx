@@ -4,6 +4,7 @@ import { useEffect, useLayoutEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getGameID } from '../../Redux/Actions';
 import Loading from '../Loading/Loading';
+import notImage from '../../assets/Img/404Image.jpg';
 const removeHtmlTags = (html) => {
     const temporalDivElement = document.createElement('div');
     temporalDivElement.innerHTML = html;
@@ -35,8 +36,8 @@ const DetailsCard = (params) => {
                 <h3 className={style.name}>{gameDatails.name}</h3>
             </div>
             <div className={style.imgcontainer}>
-                <img src={gameDatails.img} alt={gameDatails.name} className={style.image} />
-                <img src={gameDatails.image} alt={gameDatails.name} className={style.image} />
+                <img src={gameDatails.img? gameDatails.img : notImage} alt={gameDatails.name} className={style.image} />
+                <img src={gameDatails.image? gameDatails.image : notImage} alt={gameDatails.name} className={style.image} />
             </div>
             <div>
                 <h3 className={style.title}>Platforms</h3>

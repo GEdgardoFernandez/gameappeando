@@ -7,6 +7,7 @@ import { getAllGames } from '../../Redux/Actions';
 import Loading from '../Loading/Loading';
 import SearchBar from '../SearchBar/SearchBar';
 import OrderGenre from '../OrderGenre/OrderGenre.jsx';
+import notImage from '../../assets/Img/notImage.jpg';
 
 export default function GamesCards() {
   const dispatch = useDispatch();
@@ -40,10 +41,9 @@ export default function GamesCards() {
       {/* Verificar si la lista de juegos está definida antes de mapearla */}
       {games?.map(g => (
         <CardGame
-          key={g.id} // Asegúrate de incluir una clave única para cada elemento en el array mapeado
           id={g.id}
           name={g.name}
-          image={g.image}
+          image={g.image ? g.image : notImage}
           rating={g.rating}
           genre={g.genres?.join(', ')}
         />
