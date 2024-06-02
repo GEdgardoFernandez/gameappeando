@@ -45,15 +45,17 @@ export default function GamesCards() {
           name={g.name}
           image={g.image}
           rating={g.rating}
-          genre={g.genres?.join(', ') || 'No genre'}
+          genre={g.genres?.join(', ')}
         />
       ))}
-      <Pagination
-        gamesPerPage={gamesPerPage}
-        totalGames={Allgames.length}
-        paginate={paginate}
-        currentPage={currentPage}
-      />
+      <div>
+        <Pagination
+          gamesPerPage={gamesPerPage}
+          totalGames={Allgames.length}
+          paginate={paginate}
+          currentPage={currentPage}
+        />
+      </div>
     </div>
 
   );

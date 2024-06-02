@@ -6,6 +6,7 @@ import Landing from './Views/Landing';
 import Plataforms from './Views/Plataforms';
 import About from './Views/About';
 import Details from './Views/Details';
+import Modal from './Views/Modal';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route estrict path='/addgame' element={<Plataforms />} />
         <Route estrict path='/details/:id' element={<Details/>} />
         <Route estrict path='/about' element={<About />} />
+        <Route estrict path='/modal' element={<Modal />} />
       </Routes>
     </div>
 

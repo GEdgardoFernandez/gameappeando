@@ -23,7 +23,8 @@
 .title {
     font-family: "Bubble";
     font-size: 12px;
-    color: rgba(83, 53, 255, 0.714);
+    color: rgba(0, 0, 0, 0.714);
+    text-shadow: lime 1px 0 10px;
 }
 .img {
     height: 140px;

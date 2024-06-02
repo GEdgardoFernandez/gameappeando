@@ -1,32 +1,52 @@
+@font-face {
+    font-family: "Bubble";
+    src: url("..//..//assets/Fonts/bubble_pixel-7_dark.ttf");
+}
 .modalBackdrop {
+    font-family: "Bubble";
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(39, 100, 39, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .modalContent {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.7);
     padding: 20px;
     border-radius: 5px;
     text-align: center;
 }
 
 .button {
+    font-family: "Bubble";
     margin-top: 20px;
     padding: 10px 20px;
     background-color: #4CAF50;
     color: white;
-    border: none;
+    border: 1px solid #4CAF50;
     border-radius: 5px;
     cursor: pointer;
+    background: linear-gradient(90deg, #fa5fff, #03ffd1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .button:hover {
-    background-color: #45a049;
+    color: black;
+    background: linear-gradient(90deg, #fe00dc, #ff0303);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+h2{
+    background: linear-gradient(90deg, #5fff64, #ff0303);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }

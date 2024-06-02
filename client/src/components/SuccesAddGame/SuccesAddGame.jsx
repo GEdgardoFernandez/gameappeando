@@ -4,12 +4,9 @@ import style from '..//SuccesAddGame/SuccesAddGame.module.css';
 
 export default function SuccessAddGame({ show, onClose }) {
     const navigate = useNavigate();
-    if (!show) {
-        return null;
-    }
+
 
     const handleGoHome = () => {
-        onClose();
         navigate('/home');
     };
 
