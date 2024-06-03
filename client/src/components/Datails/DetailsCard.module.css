@@ -8,12 +8,15 @@
     background-image:  url("..//..//assets/Img/fondoForest.jpg");
     background-size: 100% 100%;
     width: 100%;
-    height: 100vw;
+    height: 100%;
 
 }
 .loadingContainer {
-  height: 100vw;
+  height: 100vh;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-image:  url("..//..//assets/Img/fondoForest.jpg");
   background-size: 100% 100%;
 }

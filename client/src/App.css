@@ -86,3 +86,16 @@
   bottom: 0;
   width: 100%;
 }
+
+
+.containerError {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("..//src/assets/Img/error.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+
+}

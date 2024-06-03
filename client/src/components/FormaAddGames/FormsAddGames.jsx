@@ -29,6 +29,16 @@ export default function FormsAddGames() {
         img: "",
         rating: 0,
     });
+    const initialState = {
+        name: "",
+        released: "",
+        description: "",
+        genres: [],
+        platforms: [],
+        img: "",
+        rating: 0,
+    }
+    const [buttonDisabled, setButtonDisabled] = useState(true);
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [isModalError, setIsModalError] = useState(false);
     const handleInput = (e) => {
@@ -84,9 +94,11 @@ export default function FormsAddGames() {
         e.preventDefault()
         setError(validate(game))
         if (Object.values(error).length >= 1) {
-        } else {
+        } else if ( Object.values(error).length === 0) {
+            setButtonDisabled(false)
             dispatch(createGame(game));
             setIsModalVisible(true);
+            setGame(initialState);
         }
     };
     const handleCloseModal = () => {
@@ -176,7 +188,7 @@ export default function FormsAddGames() {
                             })
                         }
                     </div>
-                    <button className={style.buttonS} type="submit">CREATE</button>
+                    <button className={style.buttonS} type="submit" disabled={buttonDisabled}>CREATE</button>
                 </form>
                 <SuccesAddGames show={isModalVisible} onClose={handleCloseModal} />
                 {/* <ErrorAddGame show={isModalError} onClose={handleCloseError} /> */}

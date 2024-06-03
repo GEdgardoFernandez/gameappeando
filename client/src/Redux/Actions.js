@@ -40,7 +40,6 @@ export function getGameID(id) {
     try {
       const response = await axios.get(`${RUTA_VIDEOGAMES}/${id}`)
       const videoGameID = response.data
-
       dispatch({
         type: GET_GAME_ID,
         payload: videoGameID
