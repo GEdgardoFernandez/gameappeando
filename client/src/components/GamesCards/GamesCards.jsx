@@ -48,7 +48,7 @@ export default function GamesCards() {
           genre={g.genres?.join(', ')}
         />
       ))}
-      <div>
+      <div className={style.pagination}>
         <Pagination
           gamesPerPage={gamesPerPage}
           totalGames={Allgames.length}

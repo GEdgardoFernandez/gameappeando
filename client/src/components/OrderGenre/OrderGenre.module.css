@@ -19,65 +19,45 @@
     text-shadow: #f21de4 1px 0 10px;
 }
 
-/*Input Genres*/
+/*radio*/
 
-.material {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    color: #7cb96a;
-    cursor: pointer;
-  }
-  
-  .material input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .checkmark {
-    position: relative;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-right: 12px;
-    border: 2px solid #454B00;
-    border-radius: 4px;
-    transition: all 0.3s;
-  }
-  
-  .material input[type="checkbox"]:checked ~ .checkmark {
-    background-color: #2F3300;
-    border-color: #454B00;
-  }
-  
-  .material input[type="checkbox"]:checked ~ .checkmark:after {
-    content: "";
-    position: absolute;
-    top: 2px;
-    left: 6px;
-    width: 4px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-  }
-  
-  .material input[type="checkbox"]:focus ~ .checkmark {
-    box-shadow: 0 0 0 2px #dfec5065;
-  }
-  
-  .material:hover input[type="checkbox"] ~ .checkmark {
-    border-color: #C3CF34;
-  }
-  
-  .material input[type="checkbox"]:disabled ~ .checkmark {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  
-  .material input[type="checkbox"]:disabled ~ .checkmark:hover {
-    border-color: #4d4d4d;
-  }
-  
+.radioInputs {
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+  padding: 0.25rem;
+  width: 100%;
+  font-size: 14px;
+  gap: 0.5rem;
+}
+
+.radioInputs .radio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.radioInputs .radio input {
+  display: none;
+}
+
+.radioInputs .radio .name {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: none;
+  padding: .5rem 0;
+  color: rgba(0, 0, 0, 0.627);
+  transition: all .15s ease-in-out;
+}
+
+.radioInputs .radio input:checked + .name {
+  background-color: #35fb0d4f;
+  font-weight: 600;
+}

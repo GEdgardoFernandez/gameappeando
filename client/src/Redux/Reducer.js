@@ -18,6 +18,7 @@ const initialState = {
   genres: [],
   platforms: [],
   sourceFilter: 'both',
+  restoreGames: [],
 }
 
 function rootReducer(state = initialState, action) {
@@ -33,6 +34,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         allGames: uniqueGames,
         filteredGames: uniqueGames,
+        restoreGames: uniqueGames,
         platforms: Array.from(new Set(platforms)),
       };
 
@@ -94,7 +96,7 @@ function rootReducer(state = initialState, action) {
       } else if (action.payload === 'db') {
         sourceFilteredGames = state.allGames.filter(game => typeof game.id !== "number");
       } else {
-        sourceFilteredGames = state.allGames;
+        sourceFilteredGames = state.restoreGames;
       }
       return {
         ...state,

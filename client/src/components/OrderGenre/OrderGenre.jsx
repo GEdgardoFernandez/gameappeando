@@ -7,13 +7,12 @@ export default function OrderGenre() {
     const handleSort = (event) => {
         const order = event.target.value;
         dispatch(orderByName(order));
-    }; 
+    };
+    
     const handleFilterSource = (event) => {
         const name = event.target.value;
-        if (name === 'api' || name === 'db') {
+        if (name === 'api' || name === 'db' || name === 'both') {
             dispatch(filterBySource(name));
-        } else {
-            dispatch(filterBySource('both'));
         }
     };
     return (
@@ -28,17 +27,37 @@ export default function OrderGenre() {
                 <option value="Lowest-Rating">Lowest Rating</option>
             </select>
             <div className={style.input}>
-                <span>Order Api or Data Base</span>
+            {/*     <span>Order Api or Data Base</span>
                 <label className={style.material}>
-                    <input type="checkbox" value={'api'} onChange={handleFilterSource} />
+                    <input type="radio" value={'api'} onChange={handleFilterSource} />
                     <span className={style.checkmark}></span>
                     Games in API
                 </label>
                 <label className={style.material}>
-                    <input type="checkbox" value={'db'} onChange={handleFilterSource} />
+                    <input type="radio" value={'db'} onChange={handleFilterSource} />
                     <span className={style.checkmark}></span>
                     Games in DATABASE
                 </label>
+                <label className={style.material}>
+                    <input type="radio" value={'both'} onChange={handleFilterSource} />
+                    <span className={style.checkmark}></span>
+                    All Games
+                </label> */}
+                <div className={style.radioInputs}>
+                    <label className={style.radio}>
+                        <input type="radio" name="games" value={"api"} onChange={handleFilterSource}/>
+                            <span className={style.name}>Games in Api</span>
+                    </label>
+                    <label className={style.radio}>
+                        <input type="radio" name="games" value={"db"} onChange={handleFilterSource}/>
+                            <span className={style.name}>Games in DATABASE</span>
+                    </label>
+
+                    <label className={style.radio}>
+                        <input type="radio" name="games" value={"both"} onChange={handleFilterSource}/>
+                            <span className={style.name}>All Games</span>
+                    </label>
+                </div>
             </div>
         </div>
     )
