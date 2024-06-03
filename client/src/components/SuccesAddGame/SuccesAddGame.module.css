@@ -24,7 +24,6 @@
 
 .button {
     font-family: "Bubble";
-    margin-top: 20px;
     padding: 10px 20px;
     background-color: #4CAF50;
     color: white;
@@ -49,4 +48,28 @@ h2{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+.buttonX {
+    font-family: "Bubble";
+    padding: 5px 10px;
+    background-color: #ef3030;
+    color: rgb(0, 0, 0);
+    border: 1px solid #a2a5a3;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttonX:hover {
+    color: red;
+    background: linear-gradient(90deg, #fe00dc, #ff0303);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.containerX {
+    display: flex;
+    justify-content: right;
+    top: 10px;
+
 }

@@ -15,6 +15,7 @@ export default function OrderGenre() {
             dispatch(filterBySource(name));
         }
     };
+
     return (
         <div className={style.containerOrder}>
             <span className={style.input}>Select Order: </span>
@@ -54,7 +55,7 @@ export default function OrderGenre() {
                     </label>
 
                     <label className={style.radio}>
-                        <input type="radio" name="games" value={"both"} onChange={handleFilterSource}/>
+                        <input type="radio" name="games" value={"both"} onChange={handleFilterSource} defaultChecked/>
                             <span className={style.name}>All Games</span>
                     </label>
                 </div>

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllGenres, getAllPlatforms, createGame } from '../../Redux/Actions';
 import ErrorAddGame from '../ErrorView/ErrorView';
+import SuccesAddGames from '../SuccesAddGame/SuccesAddGame';
 import { useNavigate } from 'react-router-dom';
 import { validate } from './validation';
 export default function FormsAddGames() {
@@ -28,7 +29,8 @@ export default function FormsAddGames() {
         img: "",
         rating: 0,
     });
-
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [isModalError, setIsModalError] = useState(false);
     const handleInput = (e) => {
         setGame({
             ...game,
@@ -81,13 +83,18 @@ export default function FormsAddGames() {
     const handleCreate = async (e) => {
         e.preventDefault()
         setError(validate(game))
-        if (Object.values(error).length > 0) {
+        if (Object.values(error).length >= 1) {
         } else {
             dispatch(createGame(game));
-            navigate('/modal');
+            setIsModalVisible(true);
         }
     };
-
+    const handleCloseModal = () => {
+        setIsModalVisible(false); // Oculta el modal
+    };
+    const handleCloseError = () => {
+        setIsModalError(false); // Oculta el modal
+    };
     return (
         <div className={style.container}>
             <div className={style.container}>
@@ -171,6 +178,8 @@ export default function FormsAddGames() {
                     </div>
                     <button className={style.buttonS} type="submit">CREATE</button>
                 </form>
+                <SuccesAddGames show={isModalVisible} onClose={handleCloseModal} />
+                {/* <ErrorAddGame show={isModalError} onClose={handleCloseError} /> */}
             </div>
         </div>
     )
