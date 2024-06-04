@@ -86,16 +86,21 @@ export default function FormsAddGames() {
             genres: game.genres.filter(genre => genre !== e.target.value)
         });
     };
-
+    useEffect(() => {
+        setError(validate(game))
+        if (Object.values(error).length === 0) {
+            setButtonDisabled(false)
+        } else {
+            setButtonDisabled(true)
+        }
+    }, [error, game])
  
     //Logica para postear el game
     console.log(game)
     const handleCreate = async (e) => {
-        e.preventDefault()
         setError(validate(game))
         if (Object.values(error).length >= 1) {
         } else if ( Object.values(error).length === 0) {
-            setButtonDisabled(false)
             dispatch(createGame(game));
             setIsModalVisible(true);
             setGame(initialState);
