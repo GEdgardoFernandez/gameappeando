@@ -42,6 +42,7 @@ export default function FormsAddGames() {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [isModalError, setIsModalError] = useState(false);
     const handleInput = (e) => {
+        console.log(e.target.value)
         setGame({
             ...game,
             [e.target.name]: e.target.value,
@@ -98,12 +99,14 @@ export default function FormsAddGames() {
     //Logica para postear el game
     console.log(game)
     const handleCreate = async (e) => {
+        e.preventDefault();
         setError(validate(game))
         if (Object.values(error).length >= 1) {
         } else if ( Object.values(error).length === 0) {
             dispatch(createGame(game));
-            setIsModalVisible(true);
             setGame(initialState);
+            setIsModalVisible(true);
+            
         }
     };
     const handleCloseModal = () => {
@@ -145,6 +148,7 @@ export default function FormsAddGames() {
                         onChange={handleInput}
                         autoComplete="off"
                     />
+                    {error.released && <span className={style.error}>{error.released}</span>}
                     <label><span className={style.input}>Rating: </span></label>
                     <input
                         className={style.inputText}
