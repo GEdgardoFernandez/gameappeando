@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/gameappeando/static/css/main.3289157a.css",
+    "main.js": "/gameappeando/static/js/main.0ed7ece7.js",
+    "static/js/885.805d2c10.chunk.js": "/gameappeando/static/js/885.805d2c10.chunk.js",
+    "static/js/453.419a5d54.chunk.js": "/gameappeando/static/js/453.419a5d54.chunk.js",
+    "static/media/fondoInicio.jpg": "/gameappeando/static/media/fondoInicio.438c64d2314c39e84cf1.jpg",
+    "static/media/Blox2.ttf": "/gameappeando/static/media/Blox2.a09ebe45f9a89c12ef2d.ttf",
+    "static/media/fondoInicio2.jpg": "/gameappeando/static/media/fondoInicio2.ccad679e6631e7e5a14b.jpg",
+    "static/media/notImage.jpg": "/gameappeando/static/media/notImage.d8c060ea4c731ab0b55d.jpg",
+    "static/media/error.jpg": "/gameappeando/static/media/error.1c8f50daf830699a6716.jpg",
+    "static/media/Start.mp3": "/gameappeando/static/media/Start.432e7167e8d4d507da1c.mp3",
+    "static/media/404Image.jpg": "/gameappeando/static/media/404Image.5fc84978ac92bce5f75e.jpg",
+    "static/media/fondoForest.jpg": "/gameappeando/static/media/fondoForest.248f34d0e5aa133a359a.jpg",
+    "static/media/bubble_pixel-7_dark.ttf": "/gameappeando/static/media/bubble_pixel-7_dark.d5265d2599c1a80cf207.ttf",
+    "index.html": "/gameappeando/index.html",
+    "main.3289157a.css.map": "/gameappeando/static/css/main.3289157a.css.map",
+    "main.0ed7ece7.js.map": "/gameappeando/static/js/main.0ed7ece7.js.map",
+    "885.805d2c10.chunk.js.map": "/gameappeando/static/js/885.805d2c10.chunk.js.map",
+    "453.419a5d54.chunk.js.map": "/gameappeando/static/js/453.419a5d54.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3289157a.css",
+    "static/js/main.0ed7ece7.js"
+  ]
+}
