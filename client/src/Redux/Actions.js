@@ -10,9 +10,9 @@ export const FILTER_BY_SOURCE = 'FILTER_BY_SOURCE'
 export const SEARCH_GAMES_BY_NAME = 'SEARCH_GAMES_BY_NAME'
 export const GET_PLATFORMS = 'GET_PLATFORMS'
 
-const RUTA_VIDEOGAMES = 'http://localhost:3001/videogames'
-const RUTA_GENRES = 'http://localhost:3001/genres'
-const RUTA_PLATFORMS = 'http://localhost:3001/platforms'
+const RUTA_VIDEOGAMES = '/videogames'
+const RUTA_GENRES = '/genres'
+const RUTA_PLATFORMS = '/platforms'
 
 export function getAllGames() {
   return async function (dispatch) {

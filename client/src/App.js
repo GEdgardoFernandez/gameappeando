@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Home from './Views/Home';
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route} from "react-router-dom"
 import Landing from './Views/Landing';
 import Plataforms from './Views/Plataforms';
 import About from './Views/About';

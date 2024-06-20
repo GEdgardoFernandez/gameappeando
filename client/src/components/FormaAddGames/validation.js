@@ -6,7 +6,6 @@ export function validate (props){
     if (props.rating === 0) { errors.rating = "Rating must be greater than 0" }
     if (isNaN(props.rating)) { errors.rating = "Rating must be a number" }
     if (props.genres.length < 2) { errors.genres = "The game must have at least one gender" }
-    if (props.released > new Date()) { errors.released = "the game must have a release date" }
     if (props.platforms.length < 2) { errors.platforms = "the game must have at least one platform" }
     if (props.released === null) { errors.released = "the game must have a release date" }
     return errors;

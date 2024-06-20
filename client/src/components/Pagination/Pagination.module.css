@@ -4,34 +4,10 @@
     align-items: center;
     gap: 1rem;
     flex-direction: row;
-    background-color: #f21de4b5;
+    background-color: #f21de4;
 }
 
 .btn {
-    font-size: 15px;
-    border: none;
-    border-radius: 5px;
-    color: rgb(31, 20, 20);
-    background-color: rgba(246, 16, 16, 0.5);
-    position: relative;
-    font-family: "Bubble";
-    background-color: none;
-    text-shadow: #f21de4 1px 0 10px;
-}
-.btn:hover {
-    background-color: rgba(154, 16, 246, 0.5);
-    color: rgb(248, 244, 244);
-    cursor: pointer;
-}
-.active {
-    background-color: rgb(255, 2, 221);
-    text-shadow: #ff00dd 1px 0 10px;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    border-radius: 5px;
-    scale: 1.1;
-}
-.btnPrev {
     font-size: 15px;
     border: none;
     border-radius: 5px;
@@ -42,8 +18,7 @@
     background-color: none;
     text-shadow: #f21de4 1px 0 10px;
 }
-
-.btnPrev:hover {
+.btn:hover {
     background-color: rgba(154, 16, 246, 0.5);
     color: rgb(248, 244, 244);
     cursor: pointer;

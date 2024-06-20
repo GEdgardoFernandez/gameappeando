@@ -11,7 +11,7 @@ export default function Pagination({ gamesPerPage, totalGames, paginate, current
     <nav>
       <ul className={style.pagination}>
         <li>
-          <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1} className={style.btnPrev}>
+          <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1} className={style.btn}>
             Previous
           </button>
         </li>
@@ -23,7 +23,7 @@ export default function Pagination({ gamesPerPage, totalGames, paginate, current
           </li>
         ))}
         <li>
-          <button onClick={() => paginate(currentPage + 1)} disabled={currentPage === pageNumbers.length} className={style.btnPrev}>
+          <button onClick={() => paginate(currentPage + 1)} disabled={currentPage === pageNumbers.length} className={style.btn}>
             Next
           </button>
         </li>
